@@ -1,6 +1,7 @@
 <template>
   <div id="app" >
-    <EditProfileForm></EditProfileForm>
+    <Header></Header>
+
   </div>
 </template>
 
@@ -9,9 +10,10 @@ import SignIn from './components/SignIn.vue'
 import SUSI from './components/SUSI.vue'
 import Particles from './components/Particles.vue'
 import EditProfileForm from './components/EditProfileForm.vue'
+import Header from './components/Header.vue'
 export default {
   name: 'App',
-  components: {SUSI,Particles,EditProfileForm},
+  components: {SUSI,Particles,EditProfileForm,Header},
 }
 </script>
 
