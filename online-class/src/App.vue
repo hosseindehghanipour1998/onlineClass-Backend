@@ -1,13 +1,6 @@
 <template>
   <div id="app" >
-          <vue-particles
-        color="#dedede"
-        :particleOpacity="0.7"
-        :particlesNumber="100"
-        :moveSpeed="3"
-        :clickEffect="false"
-      >
-      </vue-particles>
+    <Particles></Particles>
     <SUSI ></SUSI>
   </div>
 </template>
@@ -15,9 +8,10 @@
 <script>
 import SignIn from './components/SignIn.vue'
 import SUSI from './components/SUSI.vue'
+import Particles from './components/Particles.vue'
 export default {
   name: 'App',
-  components: {SUSI},
+  components: {SUSI,Particles},
 
 }
 </script>
