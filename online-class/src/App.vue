@@ -1,32 +1,24 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+  <div id="app" >
+          <vue-particles
+        color="#dedede"
+        :particleOpacity="0.7"
+        :particlesNumber="100"
+        :moveSpeed="3"
+        :clickEffect="false"
+      >
+      </vue-particles>
+    <SUSI ></SUSI>
   </div>
 </template>
 
 <script>
+import SignIn from './components/SignIn.vue'
+import SUSI from './components/SUSI.vue'
 export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
+  name: 'App',
+  components: {SUSI},
+
 }
 </script>
 
@@ -38,23 +30,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  /*background-image: linear-gradient(89deg,#206CEB 0% ,#2F0166 100%);*/
 }
+body{
+  background-image: linear-gradient(89deg,#2C3E50 0% ,#000000 100%);
 
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
 }
 </style>
