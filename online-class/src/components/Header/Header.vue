@@ -27,7 +27,7 @@ export default {}
 
 
 <style scoped>
-@import './Header/style.css';
+@import './style.css';
 
 nav{
     border-radius: 15px;

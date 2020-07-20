@@ -10,7 +10,7 @@ import SignIn from './components/SignIn.vue'
 import SUSI from './components/SUSI.vue'
 import Particles from './components/Particles.vue'
 import EditProfileForm from './components/EditProfileForm.vue'
-import Header from './components/Header.vue'
+import Header from './components/Header/Header.vue'
 export default {
   name: 'App',
   components: {SUSI,Particles,EditProfileForm,Header},
