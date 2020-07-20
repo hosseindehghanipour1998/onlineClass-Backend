@@ -5,7 +5,7 @@
             <div class="dropdown">
                 <li>
 
-                    <p><img src="./menu.png" style="width:30px;height:30px; padding-top:5px;"></p>
+                    <p><img src="./menu.png" style="width:25px;height:25px; padding-top:5px;"></p>
                     <div class="dropdown-content">
                         <a href="#">Log Out</a>
                         <a href="#">Account</a>

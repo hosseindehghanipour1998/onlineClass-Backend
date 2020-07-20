@@ -1,6 +1,6 @@
 <template>
   <div id="app" >
-    <Header></Header>
+    <SideBar></SideBar>
 
   </div>
 </template>
@@ -11,9 +11,10 @@ import SUSI from './components/SUSI.vue'
 import Particles from './components/Particles.vue'
 import EditProfileForm from './components/EditProfileForm.vue'
 import Header from './components/Header/Header.vue'
+import SideBar from './components/VerticalList/SideBar.vue'
 export default {
   name: 'App',
-  components: {SUSI,Particles,EditProfileForm,Header},
+  components: {SUSI,Particles,EditProfileForm,Header,SideBar},
 }
 </script>
 
