@@ -20,7 +20,10 @@
           <input id="column" class="inputStyle  pa2 inputStyle" type="text"  placeholder="Country">
           <input id="column" class="inputStyle  pa2 inputStyle" type="text"  placeholder="City">
         </div>
-        <textarea class="inputStyle pa2" name="message" rows="6" style="width:100%;" placeholder="Describe yourself here..."></textarea>
+        <div class="otherColumns">
+          <textarea class="inputStyle pa2 " name="message" rows="6" style="width:100%;" placeholder="Describe yourself here..."></textarea>
+        </div>
+
         <div class="row">
           <input class=" buttonStyle"  type="submit" value="save">
           <input class=" buttonStyle"  type="submit" value="reset">
@@ -66,7 +69,7 @@
   color: black !important;
 }
 .otherColumns{
-
+  display: flex;
 }
 #column{
   justify-content: center;

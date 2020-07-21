@@ -59,12 +59,14 @@ export default {
 #leftbox {
       width: 15%;
       height: 100%;
+      margin-left: 30px;
 }
 #rightbox{
       width: 85%;
       height: 100%;
       background-color:rgb(39,41,61);
       margin-left: 30px;
+      margin-right:30px;
    /* background-color:purple;*/
 
 }
