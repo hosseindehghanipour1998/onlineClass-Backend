@@ -43,10 +43,7 @@ export default {
 <style scoped>
 
 
-#leftbox {
-      width: 320px;
-      height: 100%;
-}
+
 #father{
   display: flex;
   flex-direction: column;
@@ -57,16 +54,23 @@ export default {
 #header {
     padding-right: 40px;
     margin-right: 30px;
+}
 
+#leftbox {
+      width: 15%;
+      height: 100%;
 }
 #rightbox{
-      width: 100%;
+      width: 85%;
       height: 100%;
-    background-color:purple;
+      background-color:rgb(39,41,61);
+      margin-left: 30px;
+   /* background-color:purple;*/
 
 }
 #upperRow{
     width: 100%;
+    margin:0;
     height: 80px;
 }
 
@@ -74,6 +78,7 @@ export default {
     display: flex;
     width: 100%;
     height: calc(100vh - 80px);
-    background-color:pink;
+
+    /*background-color:pink;*/
 }
 </style>
