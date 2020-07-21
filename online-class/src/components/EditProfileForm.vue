@@ -3,8 +3,8 @@
 
 <div class="SignInAlignment">
 <main class="black-80 full">
-  <form class="center card">
-    <fieldset id="sign_up" style="padding:10px;" class="ba b--transparent ph0 mh0">
+  <form class="center ">
+    <fieldset id="sign_up" style="padding:10px;flex:1;" class="ba b--transparent ph0 mh0">
       <h3 style="color:white"> Edit Profile </h3>
 
       <div class="row">
@@ -16,16 +16,16 @@
         </div>
       </div>
 
-      <div class="row pa2" style="display:inline !important; ">
-          <input class="inputStyle  pa2 input-reset ba b--transparent bg-transparent    inputStyle" type="email" name="email-address" placeholder="Email Address" id="email-address">
+      <div class="row pa2" style="width:100% ">
+          <input class="inputStyle  pa2 input-reset ba b--transparent bg-transparent   inputStyle" type="email" name="email-address" placeholder="Email Address" id="email-address">
       </div>
 
-      <div class="row pa2" style="display:inline !important; ">
+      <div class="row pa2" style="width:100% ">
         <input class="inputStyle  pa2 input-reset ba b--transparent bg-transparent    inputStyle" type="password" name="password"  id="password" placeholder="Password">
       </div>
 
-     <div class="row pa2" style="display:inline !important; ">
-        <input class="inputStyle  pa2 input-reset ba b--transparent bg-transparent    inputStyle" type="password" name="password"  id="password" placeholder="Confirm Password">
+     <div class="row pa2" style="width:100% ">
+        <input class="inputStyle  pa2 input-reset ba b--transparent bg-transparent    inputStyle" type="password" name="password"  id="ConfirmPassword" placeholder="Confirm Password">
       </div>
 
 
@@ -45,8 +45,9 @@
       <div class="row pa2" style="width:100%">
         <textarea class="inputStyle pa2" name="message" rows="6" style="width:100%;" placeholder="Describe yourself here..."></textarea>
       </div>
-      <div class="row pa2" style=" float:left; !important; ">
-        <input class=" buttonStyle b ph3 pv2 input-reset ba  bg-transparent grow pointer  f6 dib" style ="width:auto;height:auto;" type="submit" value="save">
+      <div class="row pa2" >
+        <input class=" buttonStyle b ph3 pv2    bg-transparent grow pointer  f6 dib" style ="width:auto;height:auto; float:right;" type="submit" value="Save">
+        <input class=" buttonStyle b ph3 pv2    bg-transparent grow pointer  f6 dib" style ="width:auto;height:auto; float:left;" type="submit" value="Reset">
       </div>
 
     </fieldset>
@@ -61,7 +62,8 @@
 .SignInAlignment {
 	font-family: "Comic Sans MS", cursive, sans-serif ;
 	width: 80%;
-	height: 80%;
+	height: 90%;
+  flex:1;
   	position: absolute;
   	left: 50%;
   	top: 50%;
@@ -71,6 +73,9 @@
     opacity: 1 !important;
 }
 
+.paddingRight{
+  margin-right: 60px !important;
+}
 .inputStyle {
     color: blanchedalmond !important;
     border-radius: 12px;

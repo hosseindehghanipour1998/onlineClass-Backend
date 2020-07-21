@@ -31,6 +31,7 @@ export default {}
 
 nav{
     border-radius: 15px;
+    margin: 0;
 }
 ul{
     list-style-type: none;
@@ -63,7 +64,7 @@ p:hover{
 }
 
 nav{
-    background: #444;
+
     padding: 10px 0;
 }
 

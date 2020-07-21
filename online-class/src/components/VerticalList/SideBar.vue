@@ -3,14 +3,7 @@
     <div class="Verticaltemplate">
         <h2>Dashboard</h2><hr/>
         <ul class="myList">
-            <li v-for="(item) in sideBarItems" v-bind:key="item" >
-                    <h3>{{item.title}}</h3><br/>
-                    <ul>
-                        <li v-for="string in item.sublist " v-bind:key="string">
-                            {{string}}
-                        </li>
-                    </ul>
-            </li>
+            <li v-for="(item) in sideBarItems" v-bind:key="item" >{{item}}</li>
 
         </ul>
     </div>
@@ -24,19 +17,14 @@ export default {
     },
     data() {
         return{
-            sideBarItems : [
-               {
-                   title : "Quizes" ,
-                   sublist:["Create Quiz","List Quizes"]
-               },
-               {
-                    title : "Classes" ,
-                    sublist:["Create Class" , "List Classes"]
-                },
-               {
-                   title : "Users" ,
-                   sublist:["Create User" , "List Users"]
-                },
+            sideBarItems :
+            [
+            "Create Quiz" ,
+            "List Quizes",
+            "Create Class",
+            "List Classes",
+            "Create User" ,
+            "List Users"
             ],
         }
     }
@@ -49,65 +37,47 @@ export default {
     height: 100%;
     background-color: rgb(58, 156, 109);
     color: white;
-    padding: 30px;
-    font-size: 40px;
-
+    padding: 2px;
+    text-align: center;
+    font-size: 0.45rem;
+    border-radius: 5px;
 }
 
 li{
-    display: flex;
     border-radius: 10px;
-    padding: 40px;
-    margin: 20px;
-    align-content: flex-start;
+    text-align: start;
+    text-transform: capitalize;
+    font-size: 16px;
+    font-family: sans-serif;
+    padding: 20px 10px;
+    margin:10px;
+    list-style: none;
 
 }
 
 li:hover{
-transition-duration: 0.4s;
+    transition-duration: 0.4s;
     color: black;
+    background-color: blanchedalmond;
 }
 
 li:hover::before {
-  -webkit-border-radius: 1em;
-  border-radius: 1em;
+  -webkit-border-radius: 3em;
+  border-radius: 3em;
   background-color: wheat;
 }
 
-
-
-
-
-
 .myList {
   list-style: none;
-
-}
-
- li {
-  text-transform: capitalize;
-  font-size: 1.5em;
-  font-family: sans-serif;
-  padding: 1em;
-}
-
-li.selected {
-  color: wheat;
+  padding: 0;
 }
 
  li:before {
-  display: inline-block;
+
    content: '';
-   height: 5rem;
-   width: 5rem;
-   margin-right: 1em;
+   border-radius: 40px;
+   height: 0.3rem;
+   width: 0.3rem;
 }
 
- li.selected:before {
-  -webkit-border-radius: 1em;
-  border-radius: 1em;
-}
-li li:hover{
-    color: purple;
-}
 </style>
