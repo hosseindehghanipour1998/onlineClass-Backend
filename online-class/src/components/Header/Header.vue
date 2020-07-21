@@ -1,11 +1,11 @@
 <template>
-    <nav>
+    <nav >
         <ul>
             <!-- <li><img src="./search.png"/></li> -->
             <div class="dropdown">
                 <li>
 
-                    <p><img src="./menu.png" style="width:25px;height:25px; padding-top:5px;"></p>
+                    <p><img src="./menu.png" style="width:15px;height:15px; padding-top:5px;"></p>
                     <div class="dropdown-content">
                         <a href="#">Log Out</a>
                         <a href="#">Account</a>
@@ -30,8 +30,12 @@ export default {}
 @import './style.css';
 
 nav{
+    display: flex;
+    flex:1;
+    flex-direction: column;
     border-radius: 15px;
-    margin: 0;
+    width:100%;
+    height:100%;
 }
 ul{
     list-style-type: none;
@@ -40,7 +44,8 @@ ul{
 }
 li{
     display: inline-block;
-    margin: 0 10px;
+
+
     color:papayawhip;
 }
 
@@ -64,7 +69,7 @@ p:hover{
 }
 
 nav{
-
+    margin: 0px;
     padding: 10px 0;
 }
 
@@ -88,7 +93,8 @@ nav{
 
   display: none;
   position: absolute;
-  left: -1px;
+  right: -1px;
+  text-align: center;
   background-color: #444;
   color: #eee !important;
   min-width: 160px;
@@ -99,7 +105,8 @@ nav{
 
 .dropdown-content a {
   color: white;
-  padding: 12px 16px;
+  margin:0;
+  padding: 12px;
   text-decoration: none;
   display: block;
 }

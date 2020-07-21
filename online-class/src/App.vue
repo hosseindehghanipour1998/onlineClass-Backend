@@ -36,7 +36,7 @@ export default {
 }
 body{
 background-image: linear-gradient(89deg,#2C3E50 0% ,#000000 100%);
-padding: 0;
-margin:0;
+padding: 0 !important;
+margin:0 !important;
 }
 </style>
