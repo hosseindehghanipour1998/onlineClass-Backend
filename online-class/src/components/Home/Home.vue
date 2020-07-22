@@ -18,23 +18,7 @@
                     </div>
 
                     <div  id="rightbox">
-                        <div class="courier" v-if=" pageNo === availableComponents.EditProfileLayout " >
-                             <EditProfileForm></EditProfileForm>
-                        </div>
-
-
-                        <div class="courier" v-else-if="pageNo === availableComponents.ListCoursesLayout">
-                        </div>
-
-                        <div class="courier" v-else-if="pageNo === availableComponents.ListQuizesLayout">
-                        </div>
-
-                        <div class="courier" v-else-if="pageNo === availableComponents.CreateClassesLayout">
-                            <UserListView></UserListView>
-                        </div>
-
-                        <div v-else>
-                        </div>
+                        <UserListerLayout></UserListerLayout>
                     </div>
 
 
@@ -46,14 +30,16 @@
 <script>
 import SideBar from '../VerticalList/SideBar.vue' ;
 import Header from '../Header/Header.vue' ;
-import EditProfileForm from '../EditProfileForm.vue'
-import UserListView from '../UserListView/UserListView.vue'
+import EditProfileForm from '../EditProfileForm.vue';
+import UserListView from '../UserListView/UserListView.vue';
+import UserListerLayout from '../UserListerLayout/UserListerLayout.vue'
 export default {
     components: {
         SideBar,
         Header,
         EditProfileForm,
-        UserListView
+        UserListView,
+        UserListerLayout
     },
 
     data(){
