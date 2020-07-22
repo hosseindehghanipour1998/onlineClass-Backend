@@ -2,6 +2,13 @@
     <nav >
         <ul>
             <!-- <li><img src="./search.png"/></li> -->
+            <li>
+                <div class="search searchTextBoxHolder">
+                    <input type="text" class="searchTextBox"  v-model="search" placeholder="search blogs" />
+                    <button class="searchTextBox">Search</button>
+                </div>
+            </li>
+            <li><router-link to="/" exact><p>Notifications</p></router-link></li>
             <div class="dropdown">
                 <li>
 
@@ -12,8 +19,7 @@
                     </div>
                 </li>
             </div>
-            <li><router-link to="/" exact><p>Search</p></router-link></li>
-            <li><router-link to="/" exact><p>Notifications</p></router-link></li>
+
 
 
         </ul>
@@ -22,13 +28,74 @@
 
 
 <script>
-export default {}
+export default {
+    data () {
+        return {
+            blogs: [],
+            search: ''
+        }
+    },
+    methods: {
+    },
+    created() {
+        this.$http.get('http://jsonplaceholder.typicode.com/posts').then(function(data){
+            this.blogs = data.body.slice(0,10);
+        });
+    },
+    computed: {
+        // array for the search box
+        filteredBlogs: function(){
+            return this.blogs.filter((blog) => {
+                return blog.title.match(this.search);
+            });
+        }
+    }
+}
 </script>
 
 
 <style scoped>
 @import './style.css';
+.search{
+    display: flex;
+    flex-direction: row;
+    padding : 2px;
+    margin:2px;
+}
 
+.searchTextBoxHolder{
+    color: blanchedalmond !important;
+    border-radius: 5px;
+	background-color: #01142F ;
+    background-color: #01142F!important;
+	transition-duration: 0.4s;
+    border: 2px solid #008CBA;
+    font-size: 1.5rem;
+}
+.searchBoxButton{
+
+  border-radius: 1px;
+  background-color: powderblue!important;
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  align-content: center;
+  font-size: 1.5rem;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  width: 30%;
+  border: 2px solid #008CBA;
+}
+
+.searchTextBox{
+    color: blanchedalmond !important;
+	background-color: #01142F ;
+    background-color: #01142F!important;
+	transition-duration: 0.4s;
+    font-size: 1.5rem;
+}
 nav{
     display: flex;
     flex:1;
@@ -44,8 +111,6 @@ ul{
 }
 li{
     display: inline-block;
-
-
     color:papayawhip;
 }
 

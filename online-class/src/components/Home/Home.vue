@@ -60,6 +60,7 @@ export default {
       width: 15%;
       height: 100%;
       margin-left: 30px;
+
 }
 #rightbox{
       width: 85%;
