@@ -18,7 +18,22 @@
                     </div>
 
                     <div  id="rightbox">
-                        <UserListView></UserListView>
+                        <div class="courier" v-if="activeComponent === availableComponents.EditProfileLayout " >
+                            <EditProfileForm></EditProfileForm>
+                        </div>
+
+                        <div class="courier" v-else-if="activeComponent === availableComponents.ListCoursesLayout">
+                        </div>
+
+
+                        <div class="courier" v-else-if="activeComponent === availableComponents.ListQuizesLayout">
+                        </div>
+
+                        <div class="courier" v-else-if="activeComponent === availableComponents.CreateClassesLayout>
+                            <UserListView></UserListView>
+                        </div>
+
+
                     </div>
 
                 </div>
@@ -37,53 +52,35 @@ export default {
         Header,
         EditProfileForm,
         UserListView
-    }
+    },
+
+    data(){
+        return{
+            availableComponents : {
+                EditProfileLayout : "EditProfileLayout",
+                ListCoursesLayout : "ListCoursesLayout",
+                ListQuizesLayout : "ListQuizesLayout",
+                CreateClassesLayout : "CreateClassesLayout"
+            },
+
+            activeComponent = null ,
+
+        }
+    },
+    created(){
+            // fetch the data when the view is created and the data is
+            // already being observed
+            this.activeComponent = availableComponents.EditProfileLayout ;
+        },
 
 }
 </script>
 
 <style scoped>
-
-
-
-#father{
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
+@import './styles.css';
+.courier {
+    width:100%;
+    height:100%;
 }
 
-#header {
-    padding-right: 40px;
-    margin-right: 30px;
-}
-
-#leftbox {
-      width: 15%;
-      height: 100%;
-      margin-left: 30px;
-
-}
-#rightbox{
-      width: 85%;
-      height: 100%;
-      background-color:rgb(39,41,61);
-      margin-left: 30px;
-      margin-right:30px;
-   /* background-color:purple;*/
-
-}
-#upperRow{
-    width: 100%;
-    margin:0;
-    height: 80px;
-}
-
-#lowerRow {
-    display: flex;
-    width: 100%;
-    height: calc(100vh - 80px);
-
-    /*background-color:pink;*/
-}
 </style>
