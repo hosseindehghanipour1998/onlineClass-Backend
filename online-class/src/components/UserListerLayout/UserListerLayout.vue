@@ -1,7 +1,9 @@
 <template>
     <div class="father">
-        <div class="child" v-for="item in items" v-bind:key="item">
-                <UserListView></UserListView>
+        <div class="mother">
+            <div class="child" style="grow" v-for="item in items" v-bind:key="item">
+                    <UserListView></UserListView>
+            </div>
         </div>
 
     </div>
@@ -32,20 +34,36 @@ export default {
 </script>
 
 <style scoped>
+.mother{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height:100%;
+}
+
 .father {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin:2px;
     height: 100%;
     width: 100%;
     overflow-y: scroll;
 }
-.father::webkit::-webkit-scrollbar{
-    display: none;
-}
+
 
 .child{
+    margin-bottom: 5px;
+    margin-top: 5px;
     padding: 2px;
     width: auto;
     height: auto;
+    border:2px solid white;
+    border-radius: 5px;
+}
 
+.child:hover{
+    background-color: hotpink;
 }
 </style>

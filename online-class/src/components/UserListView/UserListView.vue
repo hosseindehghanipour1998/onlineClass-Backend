@@ -42,6 +42,8 @@ export default {
     flex-direction: row;
     width: 100%;
     height: 100%;
+    border-radius: 5px;
+
 }
 
 .perosnImage{
@@ -52,6 +54,7 @@ export default {
     border-radius: 5px;
     width: auto;
     height: 50%;
+
 }
 
 #imageChild{
@@ -67,6 +70,7 @@ export default {
     justify-content: space-around;
     height: 100%;
     width : 40%;
+    text-align: center;
 }
 
 .icon{
