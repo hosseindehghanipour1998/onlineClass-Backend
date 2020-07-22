@@ -28,7 +28,11 @@
                             <UserListerLayout ></UserListerLayout>
                         </div>
 
-                        <div v-if=" pageNo === availableComponents.Account">
+                        <div v-if=" pageNo === availableComponents.ListQuizesLayout">
+                            <!-- Test Mode -->
+                            <QuizListerView ></QuizListerView>
+
+
                         </div>
 
                     </div>
@@ -44,14 +48,16 @@ import SideBar from '../VerticalList/SideBar.vue' ;
 import Header from '../Header/Header.vue' ;
 import EditProfileForm from '../EditProfileForm.vue';
 import UserListView from '../UserListView/UserListView.vue';
-import UserListerLayout from '../UserListerLayout/UserListerLayout.vue'
+import UserListerLayout from '../UserListerLayout/UserListerLayout.vue';
+import QuizListerView from '../QuizListerView/QuizListerView.vue';
 export default {
     components: {
         SideBar,
         Header,
         EditProfileForm,
         UserListView,
-        UserListerLayout
+        UserListerLayout,
+        QuizListerView
     },
     /*
       Create Quiz
@@ -76,7 +82,7 @@ export default {
 
 
             },
-            pageNo : "0",
+            pageNo : '9',
 
         }
     },
@@ -103,6 +109,10 @@ export default {
 
             if( wantedPage === "LU" ){
                 this.pageNo = "7";
+            }
+
+            if( wantedPage === "LQ" ){
+                this.pageNo = "4";
             }
 
             else{

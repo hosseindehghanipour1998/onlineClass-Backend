@@ -6,7 +6,7 @@
 
         <div id="infoChild">
             <h1 class="inputStyle"> John Doe </h1>
-            <h1 class="inputStyle">Email Address :  Hossein@gmail.com </h1>
+            <h1 class="inputStyle">hh</h1>
             <h1 class="inputStyle"> id : 22345 </h1>
         </div>
 
@@ -34,6 +34,7 @@ export default {
 	transition-duration: 0.4s;
     border: 2px solid #008CBA;
     width: 100%;
+    height: 33.33%;
     font-size: 1rem;
 }
 
@@ -60,7 +61,7 @@ export default {
 #imageChild{
     width: 40%;
     height: 100%;
-    padding:2px;
+
 }
 
 #infoChild{
