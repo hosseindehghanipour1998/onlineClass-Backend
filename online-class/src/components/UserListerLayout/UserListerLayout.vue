@@ -49,7 +49,7 @@ export default {
     margin:2px;
     height: 100%;
     width: 100%;
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
 }
 
 
@@ -61,9 +61,10 @@ export default {
     height: auto;
     border:2px solid white;
     border-radius: 5px;
+    background-color:gray ;
 }
 
 .child:hover{
-    background-color: hotpink;
+    background-color: gold;
 }
 </style>

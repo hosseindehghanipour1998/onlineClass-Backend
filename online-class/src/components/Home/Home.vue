@@ -14,11 +14,23 @@
                 <div id="lowerRow"  >
 
                     <div id="leftbox">
-                        <SideBar></SideBar>
+                        <SideBar v-on:ComponentRouter="updatePage($event)"></SideBar>
                     </div>
 
                     <div  id="rightbox">
-                        <UserListerLayout></UserListerLayout>
+
+                        <div v-if=" pageNo === availableComponents.Account">
+                            <EditProfileForm></EditProfileForm>
+                        </div>
+
+
+                        <div v-if=" pageNo === availableComponents.ListUsersLayout">
+                            <UserListerLayout ></UserListerLayout>
+                        </div>
+
+                        <div v-if=" pageNo === availableComponents.Account">
+                        </div>
+
                     </div>
 
 
@@ -41,16 +53,30 @@ export default {
         UserListView,
         UserListerLayout
     },
+    /*
+      Create Quiz
+      List Quizes
+      Create Class
+      List Classes
+      Create User
+    X List Users
+    X Account
+      LogOut
 
+    */
     data(){
         return{
             availableComponents : {
-                EditProfileLayout : "2",
+                Account : "2", //Account
                 ListCoursesLayout : "3",
                 ListQuizesLayout : "4",
-                CreateClassesLayout : "5"
+                ListUsersLayout : "7",
+                CreateCourseLayout : "5",
+                CreateQuizLayout : "6",
+
+
             },
-            pageNo : '0',
+            pageNo : "0",
 
         }
     },
@@ -68,15 +94,19 @@ export default {
     methods:{
         updatePage : function(wantedPage){
             if ( wantedPage === 'AccountWanted'  ){
-                this.pageNo = '2';
+                this.pageNo = "2";
             }
 
             if ( wantedPage === 'LogOutWanted' ){
-                this.pageNo == '0';
+                this.pageNo == "-1";
+            }
+
+            if( wantedPage === "LU" ){
+                this.pageNo = "7";
             }
 
             else{
-                this.pageNo == '0';
+                this.pageNo == "0";
             }
         }
     }

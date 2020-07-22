@@ -3,7 +3,7 @@
     <div class="Verticaltemplate">
         <h2>Dashboard</h2><hr/>
         <ul class="myList">
-            <li v-for="(item) in sideBarItems" v-bind:key="item" >{{item}}</li>
+            <li v-for="(item,index) in sideBarItems"  :key="index" v-on:click="updatePage(item.Emit)"> {{item.Text}}</li>
 
         </ul>
     </div>
@@ -19,13 +19,19 @@ export default {
         return{
             sideBarItems :
             [
-            "Create Quiz" ,
-            "List Quizes",
-            "Create Class",
-            "List Classes",
-            "Create User" ,
-            "List Users"
+                {Text : "Create Quiz" , Emit : "CRQ" },
+                {Text :"List Quizes", Emit : "LQ"},
+                {Text :"Create Class", Emit : "CC"},
+                {Text :"List Classes", Emit : "LC"},
+                {Text :"Create User", Emit : "CU"},
+                {Text :"List Users",Emit : "LU"}
             ],
+        }
+    },
+    methods:{
+        updatePage(data){
+            this.$emit("ComponentRouter",data);
+            console.log(data)
         }
     }
 }

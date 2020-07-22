@@ -23,6 +23,7 @@
         background-color:rgb(39,41,61);
         margin-left: 30px;
         margin-right:30px;
+        overflow-y: scroll;
      /* background-color:purple;*/
 
   }

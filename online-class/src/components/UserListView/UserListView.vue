@@ -34,7 +34,7 @@ export default {
 	transition-duration: 0.4s;
     border: 2px solid #008CBA;
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 #father{
