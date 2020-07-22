@@ -7,7 +7,7 @@
 
                 <div id="upperRow"  >
                     <div id="header">
-                        <Header></Header>
+                        <Header v-on:ComponentRouter="updatePage($event)"></Header>
                     </div>
                 </div>
 
@@ -18,19 +18,22 @@
                     </div>
 
                     <div  id="rightbox">
-                        <div class="courier" v-if=" xxx === availableComponents.EditProfileLayout " >
+                        <div class="courier" v-if=" pageNo === availableComponents.EditProfileLayout " >
                              <EditProfileForm></EditProfileForm>
                         </div>
 
 
-                        <div class="courier" v-else-if="xxx === availableComponents.ListCoursesLayout">
+                        <div class="courier" v-else-if="pageNo === availableComponents.ListCoursesLayout">
                         </div>
 
-                        <div class="courier" v-else-if="xxx === availableComponents.ListQuizesLayout">
+                        <div class="courier" v-else-if="pageNo === availableComponents.ListQuizesLayout">
                         </div>
 
-                        <div class="courier" v-else-if="xxx === availableComponents.CreateClassesLayout">
+                        <div class="courier" v-else-if="pageNo === availableComponents.CreateClassesLayout">
                             <UserListView></UserListView>
+                        </div>
+
+                        <div v-else>
                         </div>
                     </div>
 
@@ -56,13 +59,12 @@ export default {
     data(){
         return{
             availableComponents : {
-                EditProfileLayout : 2,
-                ListCoursesLayout : 3,
-                ListQuizesLayout : 4,
-                CreateClassesLayout : 5
+                EditProfileLayout : "2",
+                ListCoursesLayout : "3",
+                ListQuizesLayout : "4",
+                CreateClassesLayout : "5"
             },
-
-
+            pageNo : '0',
 
         }
     },
@@ -76,8 +78,20 @@ export default {
             // `this` points to the vm instance
             return availableComponents.EditProfileLayout;
         },
-        xxx: function (){
-            return 5 ;
+    },
+    methods:{
+        updatePage : function(wantedPage){
+            if ( wantedPage === 'AccountWanted'  ){
+                this.pageNo = '2';
+            }
+
+            if ( wantedPage === 'LogOutWanted' ){
+                this.pageNo == '0';
+            }
+
+            else{
+                this.pageNo == '0';
+            }
         }
     }
 

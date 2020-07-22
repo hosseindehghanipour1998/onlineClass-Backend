@@ -14,8 +14,9 @@
 
                     <p><img src="./menu.png" style="width:15px;height:15px; padding-top:5px;"></p>
                     <div class="dropdown-content">
-                        <a href="#">Log Out</a>
-                        <a href="#">Account</a>
+                        <a href="#"  v-on:click="dropdownListClick('AccountWanted')" >Account</a>
+                        <a href="#"  v-on:click="dropdownListClick('LogOutWanted')" >Log Out</a>
+
                     </div>
                 </li>
             </div>
@@ -35,12 +36,11 @@ export default {
             search: ''
         }
     },
+
     methods: {
-    },
-    created() {
-        this.$http.get('http://jsonplaceholder.typicode.com/posts').then(function(data){
-            this.blogs = data.body.slice(0,10);
-        });
+        dropdownListClick(item){
+            this.$emit("ComponentRouter",item);
+        }
     },
     computed: {
         // array for the search box

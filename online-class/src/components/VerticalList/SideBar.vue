@@ -41,6 +41,7 @@ export default {
     text-align: center;
     font-size: 0.45rem;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 li{
