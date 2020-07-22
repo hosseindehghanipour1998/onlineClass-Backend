@@ -18,7 +18,7 @@
                     </div>
 
                     <div  id="rightbox">
-                        <EditProfileForm></EditProfileForm>
+                        <UserListView></UserListView>
                     </div>
 
                 </div>
@@ -30,11 +30,13 @@
 import SideBar from '../VerticalList/SideBar.vue' ;
 import Header from '../Header/Header.vue' ;
 import EditProfileForm from '../EditProfileForm.vue'
+import UserListView from '../UserListView/UserListView.vue'
 export default {
     components: {
         SideBar,
         Header,
-        EditProfileForm
+        EditProfileForm,
+        UserListView
     }
 
 }
