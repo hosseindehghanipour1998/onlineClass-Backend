@@ -18,23 +18,22 @@
                     </div>
 
                     <div  id="rightbox">
-                        <div class="courier" v-if="activeComponent === availableComponents.EditProfileLayout " >
-                            <EditProfileForm></EditProfileForm>
-                        </div>
-
-                        <div class="courier" v-else-if="activeComponent === availableComponents.ListCoursesLayout">
+                        <div class="courier" v-if=" xxx === availableComponents.EditProfileLayout " >
+                             <EditProfileForm></EditProfileForm>
                         </div>
 
 
-                        <div class="courier" v-else-if="activeComponent === availableComponents.ListQuizesLayout">
+                        <div class="courier" v-else-if="xxx === availableComponents.ListCoursesLayout">
                         </div>
 
-                        <div class="courier" v-else-if="activeComponent === availableComponents.CreateClassesLayout>
+                        <div class="courier" v-else-if="xxx === availableComponents.ListQuizesLayout">
+                        </div>
+
+                        <div class="courier" v-else-if="xxx === availableComponents.CreateClassesLayout">
                             <UserListView></UserListView>
                         </div>
-
-
                     </div>
+
 
                 </div>
         </div>
@@ -57,21 +56,30 @@ export default {
     data(){
         return{
             availableComponents : {
-                EditProfileLayout : "EditProfileLayout",
-                ListCoursesLayout : "ListCoursesLayout",
-                ListQuizesLayout : "ListQuizesLayout",
-                CreateClassesLayout : "CreateClassesLayout"
+                EditProfileLayout : 2,
+                ListCoursesLayout : 3,
+                ListQuizesLayout : 4,
+                CreateClassesLayout : 5
             },
 
-            activeComponent = null ,
+
 
         }
     },
     created(){
             // fetch the data when the view is created and the data is
             // already being observed
-            this.activeComponent = availableComponents.EditProfileLayout ;
+
         },
+    computed: {
+        activeComponent: function () {
+            // `this` points to the vm instance
+            return availableComponents.EditProfileLayout;
+        },
+        xxx: function (){
+            return 5 ;
+        }
+    }
 
 }
 </script>
