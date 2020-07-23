@@ -29,10 +29,15 @@
                         </div>
 
                         <div v-if=" pageNo === availableComponents.ListQuizesLayout">
-                            <!-- Test Mode -->
                             <QuizListerView ></QuizListerView>
+                        </div>
 
+                        <div v-if=" pageNo === availableComponents.CreateCourseLayout">
+                            <CreateClassForm ></CreateClassForm>
+                        </div>
 
+                        <div v-if=" pageNo === availableComponents.Test">
+                            <CreateClassForm ></CreateClassForm>
                         </div>
 
                     </div>
@@ -50,6 +55,7 @@ import EditProfileForm from '../EditProfileForm.vue';
 import UserListView from '../UserListView/UserListView.vue';
 import UserListerLayout from '../UserListerLayout/UserListerLayout.vue';
 import QuizListerView from '../QuizListerView/QuizListerView.vue';
+import CreateClassForm from '../CreateClassForm/CreateClassForm.vue';
 export default {
     components: {
         SideBar,
@@ -57,7 +63,9 @@ export default {
         EditProfileForm,
         UserListView,
         UserListerLayout,
-        QuizListerView
+        QuizListerView,
+        CreateClassForm,
+
     },
     /*
       Create Quiz
@@ -79,10 +87,11 @@ export default {
                 ListUsersLayout : "7",
                 CreateCourseLayout : "5",
                 CreateQuizLayout : "6",
+                Test : '+'
 
 
             },
-            pageNo : '9',
+            pageNo : '+',
 
         }
     },
@@ -113,6 +122,9 @@ export default {
 
             if( wantedPage === "LQ" ){
                 this.pageNo = "4";
+            }
+            if( wantedPage === "CC" ){
+                this.pageNo = "5";
             }
 
             else{
