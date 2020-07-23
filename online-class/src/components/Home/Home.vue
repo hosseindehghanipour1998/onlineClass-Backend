@@ -41,8 +41,8 @@
                             <JoinClassForm ></JoinClassForm>
                         </div>
 
-                        <div v-if=" pageNo === availableComponents.Test">
-                            <JoinClassForm ></JoinClassForm>
+                        <div v-if=" pageNo === availableComponents.CreateQuizLayout">
+                            <QuizQuestionsLister ></QuizQuestionsLister>
                         </div>
 
                     </div>
@@ -62,6 +62,8 @@ import UserListerLayout from '../UserListerLayout/UserListerLayout.vue';
 import QuizListerView from '../QuizListerView/QuizListerView.vue';
 import CreateClassForm from '../CreateClassForm/CreateClassForm.vue';
 import JoinClassForm from '../JoinClassForm/JoinClassForm.vue';
+import QuizQuestion from '../QuizQuestion/QuizQuestion.vue';
+import QuizQuestionsLister from '../QuizQuestionsLister/QuizQuestionsLister.vue';
 export default {
     components: {
         SideBar,
@@ -71,15 +73,17 @@ export default {
         UserListerLayout,
         QuizListerView,
         CreateClassForm,
-        JoinClassForm
+        JoinClassForm,
+        QuizQuestion,
+        QuizQuestionsLister
 
     },
     /*
       Create Quiz
-      List Quizes
-      Create Class
+    X List Quizes
+    X Create Class
       List Classes
-      Create User
+    X Join Class
     X List Users
     X Account
       LogOut
@@ -96,8 +100,6 @@ export default {
                 CreateQuizLayout : "6",
                 JoinClassLayout : "8",
                 Test : '+'
-
-
             },
             pageNo : '+',
 
@@ -117,11 +119,11 @@ export default {
     methods:{
         updatePage : function(wantedPage){
             if ( wantedPage === 'AccountWanted'  ){
-                this.pageNo = "2";
+                this.pageNo = this.availableComponents.Account;
             }
 
             if ( wantedPage === 'LogOutWanted' ){
-                this.pageNo == "+";
+                this.pageNo == this.availableComponents.Test;
             }
 
             if( wantedPage === "LU" ){
@@ -142,8 +144,13 @@ export default {
                 this.pageNo = this.availableComponents.JoinClassLayout;
             }
 
+            if( wantedPage === "CQ" ){
+                //Join Class
+                this.pageNo = this.availableComponents.CreateQuizLayout;
+            }
+
             else{
-                this.pageNo == "0";
+                this.pageNo == "+";
             }
         }
     }

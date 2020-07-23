@@ -3,7 +3,9 @@
     <div class="Verticaltemplate">
         <h2>Dashboard</h2><hr/>
         <ul class="myList">
-            <li v-for="(item,index) in sideBarItems"  :key="index" v-on:click="updatePage(item.Emit)"> {{item.Text}}</li>
+            <li v-for="(item,index) in sideBarItems" :id="index" :key="index" v-on:click="updatePage(item.Emit)" >
+                {{item.Text}}
+            </li>
 
         </ul>
     </div>
@@ -19,19 +21,23 @@ export default {
         return{
             sideBarItems :
             [
-                {Text : "Create Quiz" , Emit : "CRQ" },
+                {Text : "Create Quiz" , Emit : "CQ" },
                 {Text :"List Quizes", Emit : "LQ"},
                 {Text :"Create Class", Emit : "CC"},
                 {Text :"List Classes", Emit : "LC"},
                 {Text :"Join Class", Emit : "JC"},
                 {Text :"List Users",Emit : "LU"}
             ],
+            selectedButton : 0 ,
+            myStyle:{
+                backgroundColor:"#16a085"
+            }
         }
     },
     methods:{
-        updatePage(data){
+        updatePage(data,index,item){
             this.$emit("ComponentRouter",data);
-            console.log(data)
+            console.log(data);
         }
     }
 }
@@ -86,5 +92,7 @@ li:hover::before {
    height: 0.3rem;
    width: 0.3rem;
 }
+
+
 
 </style>

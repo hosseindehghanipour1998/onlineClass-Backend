@@ -26,6 +26,8 @@ export default {
 }
 </script>
 <style scoped>
+
+
 .inputStyle {
     color: blanchedalmond !important;
     border-radius: 12px;

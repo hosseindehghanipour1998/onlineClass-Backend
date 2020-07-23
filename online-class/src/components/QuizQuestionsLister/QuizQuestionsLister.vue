@@ -2,7 +2,7 @@
     <div class="father">
         <div class="mother">
             <div class="child" style="grow" v-for="item in items" v-bind:key="item">
-                    <UserListView></UserListView>
+                    <QuizQuestion></QuizQuestion>
             </div>
         </div>
 
@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import UserListView from '../UserListView/UserListView.vue';
+import QuizQuestion from '../QuizQuestion/QuizQuestion.vue';
 export default {
     components:{
-        UserListView
+        QuizQuestion
     },
     props : {
         allUsers : [

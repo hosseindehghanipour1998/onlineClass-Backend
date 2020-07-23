@@ -57,7 +57,7 @@ export default {
     margin-bottom: 5px;
     margin-top: 5px;
     padding: 2px;
-    width: auto;
+    width: 60%;
     height: auto;
     border:2px solid white;
     border-radius: 5px;
