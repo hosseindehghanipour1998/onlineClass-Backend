@@ -1,7 +1,10 @@
 <template>
   <div id="app" >
+    <!-- <Particles></Particles> -->
+
     <div style="width:100% ; height:100%;">
-          <Home></Home>
+      <Home></Home>
+         <!--  <SUSI></SUSI>-->
     </div>
 
 
@@ -11,7 +14,7 @@
 <script>
 import SignIn from './components/SignIn.vue'
 import SUSI from './components/SUSI.vue'
-import Particles from './components/Particles.vue'
+import Particles from './components/Particles/Particles.vue'
 import EditProfileForm from './components/EditProfileForm.vue'
 import Header from './components/Header/Header.vue'
 import SideBar from './components/VerticalList/SideBar.vue'

@@ -1,7 +1,6 @@
 <template>
 
     <div id = "father" style="">
-
         <div  style="width:100%;height:100%;">
 
 
@@ -29,7 +28,7 @@
                         </div>
 
                         <div v-if=" pageNo === availableComponents.ListQuizesLayout">
-                            <QuizListerView ></QuizListerView>
+                            <QuizesLister ></QuizesLister>
                         </div>
 
                         <div v-if=" pageNo === availableComponents.CreateCourseLayout">
@@ -42,7 +41,7 @@
                         </div>
 
                         <div v-if=" pageNo === availableComponents.CreateQuizLayout">
-                            <QuizQuestionsLister ></QuizQuestionsLister>
+                            <CreateQuizLayout ></CreateQuizLayout>
                         </div>
 
                     </div>
@@ -59,11 +58,13 @@ import Header from '../Header/Header.vue' ;
 import EditProfileForm from '../EditProfileForm.vue';
 import UserListView from '../UserListView/UserListView.vue';
 import UserListerLayout from '../UserListerLayout/UserListerLayout.vue';
-import QuizListerView from '../QuizListerView/QuizListerView.vue';
+import QuizesLister from '../QuizesLister/QuizesLister.vue';
 import CreateClassForm from '../CreateClassForm/CreateClassForm.vue';
 import JoinClassForm from '../JoinClassForm/JoinClassForm.vue';
 import QuizQuestion from '../QuizQuestion/QuizQuestion.vue';
 import QuizQuestionsLister from '../QuizQuestionsLister/QuizQuestionsLister.vue';
+import CreateQuizLayout from '../CreateQuizLayout/CreateQuizLayout.vue';
+import Particles from '../Particles/Particles.vue';
 export default {
     components: {
         SideBar,
@@ -71,11 +72,13 @@ export default {
         EditProfileForm,
         UserListView,
         UserListerLayout,
-        QuizListerView,
+        QuizesLister,
         CreateClassForm,
         JoinClassForm,
         QuizQuestion,
-        QuizQuestionsLister
+        QuizQuestionsLister,
+        CreateQuizLayout,
+        Particles
 
     },
     /*
