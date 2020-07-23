@@ -36,8 +36,13 @@
                             <CreateClassForm ></CreateClassForm>
                         </div>
 
+
+                        <div v-if=" pageNo === availableComponents.JoinClassLayout">
+                            <JoinClassForm ></JoinClassForm>
+                        </div>
+
                         <div v-if=" pageNo === availableComponents.Test">
-                            <CreateClassForm ></CreateClassForm>
+                            <JoinClassForm ></JoinClassForm>
                         </div>
 
                     </div>
@@ -56,6 +61,7 @@ import UserListView from '../UserListView/UserListView.vue';
 import UserListerLayout from '../UserListerLayout/UserListerLayout.vue';
 import QuizListerView from '../QuizListerView/QuizListerView.vue';
 import CreateClassForm from '../CreateClassForm/CreateClassForm.vue';
+import JoinClassForm from '../JoinClassForm/JoinClassForm.vue';
 export default {
     components: {
         SideBar,
@@ -65,6 +71,7 @@ export default {
         UserListerLayout,
         QuizListerView,
         CreateClassForm,
+        JoinClassForm
 
     },
     /*
@@ -87,6 +94,7 @@ export default {
                 ListUsersLayout : "7",
                 CreateCourseLayout : "5",
                 CreateQuizLayout : "6",
+                JoinClassLayout : "8",
                 Test : '+'
 
 
@@ -113,18 +121,25 @@ export default {
             }
 
             if ( wantedPage === 'LogOutWanted' ){
-                this.pageNo == "-1";
+                this.pageNo == "+";
             }
 
             if( wantedPage === "LU" ){
-                this.pageNo = "7";
+                //List Users
+                this.pageNo = this.availableComponents.ListUsersLayout;
             }
 
             if( wantedPage === "LQ" ){
-                this.pageNo = "4";
+                //List Quizes
+                this.pageNo = this.availableComponents.ListQuizesLayout;
             }
             if( wantedPage === "CC" ){
-                this.pageNo = "5";
+                // Create Class
+                this.pageNo = this.availableComponents.CreateCourseLayout;
+            }
+            if( wantedPage === "JC" ){
+                //Join Class
+                this.pageNo = this.availableComponents.JoinClassLayout;
             }
 
             else{
