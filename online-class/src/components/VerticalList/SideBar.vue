@@ -23,7 +23,7 @@ export default {
                 {Text :"List Quizes", Emit : "LQ"},
                 {Text :"Create Class", Emit : "CC"},
                 {Text :"List Classes", Emit : "LC"},
-                {Text :"Create User", Emit : "CU"},
+                {Text :"Add Students", Emit : "AS"},
                 {Text :"List Users",Emit : "LU"}
             ],
         }
