@@ -11,7 +11,8 @@ export const store = new Vuex.Store({
           last_name : null,
           username : null ,
           token : null,
-          isLoggedIn : false
+          isLoggedIn : false,
+          email : null ,
       },
 
       classes : {
@@ -23,14 +24,13 @@ export const store = new Vuex.Store({
   //Mutations
   mutations:{
       setUserData(state, payload){
-          state.user.id = payload.id
-          state.user.token = payload.token
-          state.user.first_name = payload.user.first_name
-          state.user.last_name = payload.user.last_name
-          state.user.username = payload.user.username
-          state.user.isLogedin = true
-          localStorage.setItem('userData', this.state.user);
-          console.log("Data Added to local Storage")
+          this.state.user.id = payload.id
+          this.state.user.token = payload.token
+          this.state.user.first_name = payload.user.first_name
+          this.state.user.last_name = payload.user.last_name
+          this.state.user.username = payload.user.username
+          this.state.user.isLogedin = true
+          this.state.user.email = payload.user.email
         },
       setUserClasses(state, payload){
           if(payload != undefined){

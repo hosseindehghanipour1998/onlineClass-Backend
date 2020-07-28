@@ -5,20 +5,21 @@
   <form>
         <h3 style="color:white"> Edit Profile </h3>
         <div class="row">
-          <input  class="inputStyle  pa2 inputStyle" type="text"  placeholder="First Name ">
-          <input class="inputStyle  pa2 inputStyle" type="text"  placeholder="Last Name ">
+          <input  class="inputStyle  pa2 inputStyle" type="text" :value="this.userData.first_name" placeholder="First Name " disabled >
+          <input class="inputStyle  pa2 inputStyle" type="text"  :value="this.userData.last_name" placeholder="Last Name " disabled>
         </div>
 
+
         <div class="otherColumns">
-          <input class="inputStyle  pa2 inputStyle" type="email"  placeholder="Email Address" id="email-address">
-          <input class="inputStyle  pa2  inputStyle" type="password"  id="password" placeholder="Password">
-          <input class="inputStyle  pa2 inputStyle" type="password"  id="password" placeholder="Confirm Password">
+          <input class="inputStyle  pa2 inputStyle" type="email"  placeholder="Email Address"  :value="this.userData.email" id="email-address" disabled>
+          <!-- <input class="inputStyle  pa2  inputStyle" type="password"  id="password"  placeholder="Password">
+          <input class="inputStyle  pa2 inputStyle" type="password"  id="password"   placeholder="Confirm Password"> -->
         </div>
 
         <div class="row">
-          <input id="column" class="inputStyle  pa2 inputStyle" type="text"  placeholder="Postal Code ">
-          <input id="column" class="inputStyle  pa2 inputStyle" type="text"  placeholder="Country">
-          <input id="column" class="inputStyle  pa2 inputStyle" type="text"  placeholder="City">
+          <input id="column" class="inputStyle  pa2 inputStyle" type="text"  placeholder="Postal Code " disabled>
+          <input id="column" class="inputStyle  pa2 inputStyle" type="text"  placeholder="Country" disabled>
+          <input id="column" class="inputStyle  pa2 inputStyle" type="text" :value="this.userData.username" placeholder="username" disabled>
         </div>
         <div class="otherColumns">
           <textarea class="inputStyle pa2 " name="message" rows="6" style="width:100%;" placeholder="Describe yourself here..."></textarea>
@@ -31,6 +32,33 @@
   </form>
 </div>
 </template>
+
+<script>
+export default {
+  data(){
+    return{
+      userData : {
+        username : "",
+        password : "" ,
+        first_name : "",
+        last_name : "",
+        email : ""
+      }
+    }
+  },
+
+  mounted() {
+    //let UserObject = JSON.parse(localStorage.getItem('userData'))
+    //console.log("Received Data")
+    //console.log(UserObject)
+    this.userData.username = this.$store.state.user.username ;
+    this.userData.first_name = this.$store.state.user.first_name ;
+    this.userData.last_name = this.$store.state.user.last_name ;
+    this.userData.email = this.$store.state.user.email
+  }
+}
+</script>
+
 
 <style scoped>
 .SignInAlignment {

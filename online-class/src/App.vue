@@ -1,12 +1,9 @@
 <template>
   <div id="app" >
-     <!-- <particles></particles> -->
+    <particles></particles>
     <div style="width:100% ; height:100%;">
-       <router-view />
-      <!-- <Home></Home> -->
-     <!-- <SUSI></SUSI> -->
-    </div>
-
+      <router-view />
+   </div>
 
   </div>
 </template>
@@ -47,7 +44,9 @@ computed: {
 -->
 
 <script>
+import Particles from './components/Particles/Particles.vue'
 export default {
+  components: {Particles},
   name: "App",
   computed: {
     user() {

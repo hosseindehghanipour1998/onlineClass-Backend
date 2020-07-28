@@ -282,6 +282,7 @@ p{
 
 .measure {
     max-width: 30em;
+    height: auto;
 }
 
 .center {

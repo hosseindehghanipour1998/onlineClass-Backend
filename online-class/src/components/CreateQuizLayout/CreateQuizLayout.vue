@@ -33,6 +33,11 @@ export default {
     },
     data(){
         return{
+            question : {
+                questionText : "",
+                answerText : ""
+            },
+
              inputs: [
                 {
                     name: ''
