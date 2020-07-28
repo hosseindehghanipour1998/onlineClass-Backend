@@ -1,10 +1,9 @@
 <template>
   <div id="app" >
-    <!-- <Particles></Particles> -->
 
     <div style="width:100% ; height:100%;">
-      <!--<Home></Home>-->
-      <SUSI></SUSI>
+      <!-- <Home></Home> -->
+     <SUSI></SUSI>
     </div>
 
 
@@ -36,10 +35,10 @@ export default {
   color: #2c3e50;
   margin-top: 0;
   background-image: linear-gradient(89deg,#2C3E50 0% ,#000000 100%);
-  background-color: #000000;
+  /*background-color: #000000;*/
 }
 body{
-  background-image: linear-gradient(89deg,#2C3E50 0% ,#000000 100%) !important;
+  /*background-image: linear-gradient(89deg,#2C3E50 0% ,#000000 100%) !important;*/
   padding: 0 !important;
   margin:0 !important;
 }

@@ -1,6 +1,6 @@
 <template>
 
-    <div id = "father" style="">
+    <div id = "father" class="bg-transparent" style="">
         <div  style="width:100%;height:100%;">
 
 
@@ -166,6 +166,9 @@ export default {
 .courier {
     width:100%;
     height:100%;
+}
+.bg-transparent {
+    background-color: transparent;
 }
 
 </style>

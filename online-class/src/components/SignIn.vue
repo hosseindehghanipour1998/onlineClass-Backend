@@ -46,7 +46,7 @@
 export default {
     data(){
       return{
-        form : {
+        user : {
           username: "",
           password : "",
         }
@@ -60,12 +60,12 @@ export default {
       },
       onLogin(event){
         event.preventDefault();
-        this.$store.dispatch('login',this.form);
+        this.$store.dispatch('login',this.user);
       }
     }
 }
 </script>
 
 <style scoped>
- @import "../CSSFiles/Forms.css"
+ @import "../CSSFiles/Forms.css";
 </style>
