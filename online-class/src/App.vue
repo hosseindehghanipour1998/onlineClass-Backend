@@ -1,6 +1,6 @@
 <template>
   <div id="app" >
-    <particles></particles>
+    <!-- <particles></particles> -->
     <div style="width:100% ; height:100%;">
        <router-view />
       <!-- <Home></Home> -->
@@ -11,6 +11,7 @@
   </div>
 </template>
 
+<!--
 <script>
 import SignIn from './components/SignIn.vue'
 import SUSI from './components/SUSI.vue'
@@ -33,18 +34,61 @@ computed: {
       return this.$store.getters.rooms.length
     },
     mounted() {
+      console.log(this.isLogedin)
       if(!this.isLogedin){
-        //this.$router.push('/')
-      }
-      else {
-        //his.$router.push('/home')
+        this.$router.push('/login')
+
       }
     }
   },
 };
 </script>
 
+-->
 
+<script>
+export default {
+  name: "App",
+  computed: {
+    user() {
+      return this.$store.state.user
+    },
+    isLogedin() {
+      return this.$store.state.user.isLogedin
+    },
+    roomsLength() {
+      return this.$store.getters.rooms.length
+    }
+  },
+  mounted() {
+    if(!this.isLogedin){
+      this.$router.push('/login')
+    }
+  },
+  watch: {
+    user: {
+      deep: true,
+
+      handler(newValue){
+        if (newValue.isLogedin){
+          this.$router.push('/')
+          this.$store.dispatch('getUserRooms')
+        }
+      }
+    },
+    isLogedin(newValue) {
+      if(!newValue) {
+        this.$router.push('/login')
+      }
+    },
+    roomsLength(newValue) {
+      if(newValue) {
+        this.$store.dispatch('getRoomsExams')
+      }
+    }
+  }
+};
+</script>
 <style>
 #app {
 

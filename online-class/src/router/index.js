@@ -1,7 +1,9 @@
+/*
 import Vue from 'vue'
 import Router from 'vue-router';
-import SUSI from '@/components/SUSI.vue';
 import Home from '@/components/Home/Home.vue';
+import SUSI from '@/components/SUSI.vue';
+
 Vue.use(Router)
 
 export default new Router({
@@ -18,3 +20,33 @@ export default new Router({
     },
   ]
 })
+*/
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../components/Home/Home.vue";
+import SUSI from "../components/SUSI.vue";
+Vue.use(VueRouter);
+
+const routes = [
+  {
+    path: "/login",
+    name: "SUSI",
+    component: SUSI,
+  },
+  {
+    path: "/",
+    name: "Home",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: Home,
+  },
+];
+
+const router = new VueRouter({
+  mode: "history",
+  base: process.env.BASE_URL,
+  routes,
+});
+
+export default router;
