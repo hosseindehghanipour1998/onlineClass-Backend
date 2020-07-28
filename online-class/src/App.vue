@@ -1,6 +1,6 @@
 <template>
   <div id="app" >
-    <!-- <particles></particles> -->
+     <!-- <particles></particles> -->
     <div style="width:100% ; height:100%;">
        <router-view />
       <!-- <Home></Home> -->
@@ -64,6 +64,7 @@ export default {
     if(!this.isLogedin){
       this.$router.push('/login')
     }
+
   },
   watch: {
     user: {

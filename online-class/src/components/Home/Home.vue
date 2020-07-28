@@ -104,7 +104,8 @@ export default {
                 JoinClassLayout : "8",
                 Test : '+'
             },
-            pageNo : '+',
+            pageNo : '2',
+
 
         }
     },
