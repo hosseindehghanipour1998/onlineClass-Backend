@@ -3,8 +3,8 @@
     <!-- <Particles></Particles> -->
 
     <div style="width:100% ; height:100%;">
-      <Home></Home>
-         <!--  <SUSI></SUSI>-->
+      <!--<Home></Home>-->
+      <SUSI></SUSI>
     </div>
 
 
@@ -18,7 +18,7 @@ import Particles from './components/Particles/Particles.vue'
 import EditProfileForm from './components/EditProfileForm.vue'
 import Header from './components/Header/Header.vue'
 import SideBar from './components/VerticalList/SideBar.vue'
-import Home from './components/Home/Home.vue'
+import Home from './components/Home/Home.vue';
 export default {
   name: 'App',
   components: {SUSI,Particles,EditProfileForm,Header,SideBar,Home},
@@ -35,11 +35,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 0;
-  /*background-image: linear-gradient(89deg,#206CEB 0% ,#2F0166 100%);*/
+  background-image: linear-gradient(89deg,#2C3E50 0% ,#000000 100%);
+  background-color: #000000;
 }
 body{
-background-image: linear-gradient(89deg,#2C3E50 0% ,#000000 100%);
-padding: 0 !important;
-margin:0 !important;
+  background-image: linear-gradient(89deg,#2C3E50 0% ,#000000 100%) !important;
+  padding: 0 !important;
+  margin:0 !important;
 }
 </style>

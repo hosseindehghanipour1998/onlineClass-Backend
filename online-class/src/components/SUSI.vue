@@ -1,5 +1,5 @@
 <template>
-<div>
+<div >
     <div v-if="SignInActivated"  ><SignIn v-on:changePage="updatePage($event)"></SignIn></div>
     <div v-else-if="!SignInActivated" ><SignUp v-on:changePage="updatePage($event)"></SignUp></div>
 </div>
@@ -35,5 +35,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
