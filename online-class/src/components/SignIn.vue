@@ -46,7 +46,7 @@
 export default {
     data(){
       return{
-        user : {
+        form : {
           username: "",
           password : "",
         }
@@ -54,15 +54,21 @@ export default {
 
     },
     methods :{
-        changePage: function(){
+      changePage: function(){
             this.$emit('changePage', 'signUpWanted');
             console.log('Emitting signUpWanted');
       },
+
       onLogin(event){
         event.preventDefault();
-        this.$store.dispatch('login',this.user);
+        this.$store.dispatch('login',this.form);
+        let userData = localStorage.getItem('statuscode');
+        console.log(userData)
+        if(userData == "200" ){
+          console.log("SuccessFul Hossein !")
+        }
       }
-    }
+    },
 }
 </script>
 

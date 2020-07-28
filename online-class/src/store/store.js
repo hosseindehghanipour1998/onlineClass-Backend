@@ -29,6 +29,8 @@ export const store = new Vuex.Store({
           state.user.last_name = payload.user.last_name
           state.user.username = payload.user.username
           state.user.isLogedin = true
+          localStorage.setItem('userData', this.state.user);
+          console.log("Data Added to local Storage")
         },
       setUserClasses(state, payload){
           if(payload != undefined){
@@ -40,6 +42,7 @@ export const store = new Vuex.Store({
 
   actions :{
     login(context, payload) {
+      localStorage.setItem('statuscode',"")
       mixin.methods.baseRequest({	// login user api call
         url: 'user/login/',
         method: 'POST',
@@ -47,7 +50,13 @@ export const store = new Vuex.Store({
       }).then(res => {
         console.log(res)
         localStorage.setItem('token', res.data.token) // save token into localstorage
+        // localStorage.setItem('statuscode',res.status)
         context.commit('setUserData', res.data) // create related cafe classes
+        if(res.status == 200){
+          console.log("Status : 200")
+          this.$router.push( { name: 'Home' })
+        }
+
       }).catch(err => {
         context.state.localLoading = false // deactive loading mode
         if (err.response) {

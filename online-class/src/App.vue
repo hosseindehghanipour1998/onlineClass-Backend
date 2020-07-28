@@ -1,9 +1,10 @@
 <template>
   <div id="app" >
-
+    <particles></particles>
     <div style="width:100% ; height:100%;">
+       <router-view />
       <!-- <Home></Home> -->
-     <SUSI></SUSI>
+     <!-- <SUSI></SUSI> -->
     </div>
 
 
@@ -21,7 +22,26 @@ import Home from './components/Home/Home.vue';
 export default {
   name: 'App',
   components: {SUSI,Particles,EditProfileForm,Header,SideBar,Home},
-}
+computed: {
+    user() {
+      return this.$store.state.user
+    },
+    isLogedin() {
+      return this.$store.state.user.isLogedin
+    },
+    roomsLength() {
+      return this.$store.getters.rooms.length
+    },
+    mounted() {
+      if(!this.isLogedin){
+        //this.$router.push('/')
+      }
+      else {
+        //his.$router.push('/home')
+      }
+    }
+  },
+};
 </script>
 
 

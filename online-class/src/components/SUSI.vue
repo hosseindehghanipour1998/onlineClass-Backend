@@ -12,7 +12,7 @@ import SignUp from './SignUp.vue'
 export default {
     data() {
         return {
-            SignInActivated : false ,
+            SignInActivated : true ,
         }
 
     },

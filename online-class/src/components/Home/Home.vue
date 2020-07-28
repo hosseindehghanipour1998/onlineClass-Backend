@@ -1,6 +1,6 @@
 <template>
 
-    <div id = "father" class="bg-transparent" style="">
+    <div id = "father" style="">
         <div  style="width:100%;height:100%;">
 
 

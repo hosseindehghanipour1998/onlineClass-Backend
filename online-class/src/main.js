@@ -4,15 +4,16 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import {store} from './store/store'
-
-Vue.config.productionTip = false
+import mixin from "./mixin";
 import VueParticles from 'vue-particles'
+
+Vue.mixin(mixin);
+Vue.config.productionTip = false
 Vue.use(VueParticles)
+
 /* eslint-disable no-new */
 new Vue({
   store:store,
-  el: '#app',
   router,
-  components: { App },
-  template: '<App/>'
-})
+  render: (h) => h(App)
+}).$mount("#app")

@@ -42,5 +42,5 @@ export default {
 }
 </script>
 <style scoped>
- @import "../CSSFiles/Forms.css"
+ @import "../CSSFiles/Forms.css";
 </style>
