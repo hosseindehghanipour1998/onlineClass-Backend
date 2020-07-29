@@ -7,23 +7,23 @@
       <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
         <legend class="f4 fw6 ph0 mh0 textWhite">Register</legend>
         <div class="mt3">
-          <input class="inputStyle  pa2 input-reset ba  bg-transparent grow   inputStyle" type="text" name="email-address" placeholder="Firstname" id="email-address">
+          <input class="inputStyle grow inputStyle" type="text" v-model="form.first_name" placeholder="Firstname" >
         </div>
         <div class="mt3">
-          <input class="inputStyle  pa2 input-reset ba  bg-transparent grow   inputStyle" type="text" name="email-address" placeholder="LastName" id="email-address">
+          <input class="inputStyle grow " type="text"  v-model="form.last_name" placeholder="LastName" >
         </div>
 
         <div class="mt3">
-          <input class="inputStyle  pa2 input-reset ba  bg-transparent grow   inputStyle" type="text" name="email-address" placeholder="LastName" id="email-address">
+          <input class="inputStyle  grow " type="text"  v-model="form.username" placeholder="Username" >
         </div>
         <div class="mv3">
-          <input class="inputStyle  pa2 input-reset ba  bg-transparent  grow  inputStyle" type="password" name="password"  id="password" placeholder="Password">
+          <input class="inputStyle grow " type="password"   id="password" v-model="form.password" placeholder="Password">
         </div>
         <div class="mv3">
-          <input class="inputStyle  pa2 input-reset ba  bg-transparent  grow  inputStyle" type="password" name="password"  id="password" placeholder="Confirm Password">
+          <input class="inputStyle grow " type="password"   id="password"  v-model="form.confirm_password" placeholder="Confirm Password">
         </div>
       <div class="">
-        <input class=" buttonStyle b ph3 pv2 input-reset ba  bg-transparent grow pointer  f6 dib" type="submit" value="Register">
+        <input class=" buttonStyle grow"  v-on:click="registerUser" type="submit" value="Register">
       </div>
       <div class="lh-copy mt3" style="display: inline-block;">
           <p> </p>
@@ -43,11 +43,11 @@ export default {
     data(){
       return{
         form : {
-          first_name : null,
-          last_name : null,
-          password : null,
-          confirm_password : null ,
-          username : null ,
+          first_name : "Mohammad",
+          last_name : "Siavashi",
+          password : "Hossein123",
+          confirm_password : "Hossein123" ,
+          username : "M_Siavashi" ,
         }
       }
     },
@@ -55,7 +55,16 @@ export default {
         changePage: function(){
             this.$emit('changePage', 'signInWanted');
             console.log('Emitting signInWanted');
-      }
+        },
+        registerUser(){
+            event.preventDefault();
+            if(this.form.password == this.form.confirm_password) {
+                delete this.form['confirm_password']
+                console.log(this.form)
+                this.$store.dispatch('register', this.form)
+            }
+        }
+
     }
 }
 </script>
@@ -150,6 +159,7 @@ p{
     border: 2px solid #008CBA;
     width: 100%;
     font-size: 1.5rem;
+    padding : 2px;
 }
 
 .inputStyle:hover{
