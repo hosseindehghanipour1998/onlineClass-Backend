@@ -79,7 +79,8 @@ Vue.use(Vuex);
 			}).catch(err => {
 				context.state.localLoading = false // deactive loading mode
 				if (err.response) {
-					console.log(err.response)
+          console.log(err.response)
+          alert("Username or Email Already Exists")
 					if (err.response.status == 400) {
 						console.log({ message: 'اطلاعات ورودی معتبر نیست' })
 					}

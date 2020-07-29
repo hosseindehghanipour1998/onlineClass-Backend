@@ -12,7 +12,9 @@
         <div class="mt3">
           <input class="inputStyle grow " type="text"  v-model="form.last_name" placeholder="LastName" >
         </div>
-
+        <div class="mt3">
+          <input class="inputStyle grow " type="text"  v-model="form.email" placeholder="Email" >
+        </div>
         <div class="mt3">
           <input class="inputStyle  grow " type="text"  v-model="form.username" placeholder="Username" >
         </div>
@@ -48,6 +50,7 @@ export default {
           password : "Hossein123",
           confirm_password : "Hossein123" ,
           username : "M_Siavashi" ,
+          email : "MSiavashi@gmail.com"
         }
       }
     },
