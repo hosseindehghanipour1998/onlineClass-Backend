@@ -2,7 +2,8 @@
     <div class="father">
         <div class="mother">
             <div class="child" style="grow" v-for="item in items" v-bind:key="item">
-                    <EachQuizLayout></EachQuizLayout>
+                    <!-- <EachQuizLayout></EachQuizLayout> -->
+                    <DatePicker></DatePicker>
             </div>
         </div>
 
@@ -11,9 +12,11 @@
 
 <script>
 import EachQuizLayout from '../EachQuizLayout/EachQuizLayout.vue';
+import DatePicker from './DatePicker/DatePicker.vue'
 export default {
     components:{
-        EachQuizLayout
+        EachQuizLayout,
+        DatePicker
     },
     props : {
         allUsers : [

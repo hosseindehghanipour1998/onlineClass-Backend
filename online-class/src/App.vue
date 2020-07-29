@@ -90,6 +90,8 @@ export default {
 };
 </script>
 <style>
+@import 'bootstrap/dist/css/bootstrap.css';
+@import 'bootstrap-vue/dist/bootstrap-vue.css';
 .grandPa{
   position: absolute;
   left: 0;
