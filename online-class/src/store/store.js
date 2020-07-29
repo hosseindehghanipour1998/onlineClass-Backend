@@ -107,7 +107,9 @@ Vue.use(Vuex);
       mixin.methods.request({
 				url: 'room/create/',
         method: 'POST',
-        data: { name: payload,
+        data: { name: payload.classTitle,
+                link : payload.classHash,
+                description : payload.classDescription,
                 admin: [context.state.user.id]
               }
 			}).then(res => {

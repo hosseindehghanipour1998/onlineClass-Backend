@@ -5,25 +5,66 @@
   <form>
         <h3 style="color:white"> Create Class </h3>
         <div class="row">
-          <input  class="inputStyle  pa2 inputStyle" type="text"  placeholder="Class Title ">
+          <input  class="inputStyle  pa2 inputStyle" type="text" v-model="classRoom.classTitle" placeholder="Class Title ">
         </div>
 
         <div class="row">
-          <button id="columnLeft" class="buttonStyle" type="submit" >Create Hash</button>
-          <p id="columnRight" class="inputStyle  pa2 inputStyle"   placeholder="Hash">Hash:</p>
+          <input id="columnLeft" class="buttonStyle" v-on:click="createHash" value="Create Hash" >
+          <input id="columnRight" class="inputStyle  pa2 inputStyle"  v-model="classRoom.classHash"  placeholder="Hash" disabled>
         </div>
         <div class="otherColumns">
-          <textarea class="inputStyle pa2 " name="message" rows="6" style="width:100%;" placeholder="Class Description ..."></textarea>
+          <textarea class="inputStyle pa2 " name="message" rows="6"  v-model="classRoom.classDescription" style="width:100%;" placeholder="Class Description ..."></textarea>
         </div>
 
         <div class="row">
-          <input class=" inputStyle"  id="MNS"  placeholder="Max No. Of Students">
-          <input class=" buttonStyle"  id="SBTN" type="submit" value="save">
-          <input class=" buttonStyle"  id="RBTN" type="submit" value="reset">
+          <input class=" inputStyle"  id="MNS"  placeholder="Max No. Of Students" disabled>
+          <input class=" buttonStyle"  id="SBTN" v-on:click="saveForm" value="save">
+          <input class=" buttonStyle"  id="RBTN" v-on:click="resetForm" value="reset">
         </div>
   </form>
 </div>
 </template>
+
+<script>
+export default {
+  data(){
+    return{
+      classRoom : {
+        classHash : " " ,
+        classTitle : " ",
+        classDescription:" "
+      }
+
+    }
+  },
+  methods:{
+    makeHash(length) {
+      var result           = '';
+      var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      var charactersLength = characters.length;
+      for ( var i = 0; i < length; i++ ) {
+          result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return result;
+    },
+    createHash(){
+      let hash = this.makeHash(20);
+      this.classRoom.classHash = hash ;
+    },
+    resetForm(){
+      this.classRoom.classDescription = "" ;
+      this.classRoom.classTitle = "" ;
+      this.classRoom.classHash = "" ;
+    },
+    saveForm(){
+        event.preventDefault();
+        this.$store.dispatch('createRoom',this.classRoom);
+    }
+
+  }
+}
+</script>
+
 
 <style scoped>
 
