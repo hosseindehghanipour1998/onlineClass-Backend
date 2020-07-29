@@ -6,16 +6,13 @@ import router from './router';
 import {store} from './store/store';
 import mixin from "./mixin";
 import VueParticles from 'vue-particles';
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+
 
 Vue.mixin(mixin);
 Vue.config.productionTip = false
 Vue.use(VueParticles)
-// Install BootstrapVue
-Vue.use(BootstrapVue)
-// Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin)
-/* eslint-disable no-new */
+
+
 new Vue({
   store:store,
   router,
