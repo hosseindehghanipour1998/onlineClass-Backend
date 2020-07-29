@@ -5,16 +5,46 @@
   <form>
         <h3 style="color:white"> Join Class </h3>
         <div class="row">
-          <input  id="columnLeft" class="inputStyle  pa2 inputStyle" type="text"  placeholder="Class Hash">
-          <button id="columnRight" class="buttonStyle" type="submit" >Search</button>
+          <input  id="columnLeft" class="inputStyle pa2 inputStyle"  v-model="roomLink"  type="text"  placeholder="Class Hash">
+          <input  class="buttonStyle columnRight" value="Search" >
+          <input class="buttonStyle columnRight" v-on:click="joinClass" value="Join" >
         </div>
         <div class="otherColumns">
-          <p class="inputStyle pa2 "   style="width:100%;" placeholder="Class Description ...">Status : </p>
+        <input class="inputStyle pa5 "   style="width:100%;text-align:center;" v-model="msg" placeholder="Status">
         </div>
 
   </form>
 </div>
 </template>
+
+
+<script>
+export default {
+
+  data(){
+    return {
+      roomLink : "" ,
+      msg : " " ,
+    }
+  },
+  methods: {
+    joinClass(){
+      this.$store.dispatch('joinRoom',this.roomLink);
+      let joined = this.$store.state.successfulRoomJoining ;
+      if ( joined ){
+        this.msg = "Successfully Joined"
+      }
+      else {
+        this.msg = "Unable to Join"
+      }
+
+    }
+  },
+  mounted() {
+
+  }
+}
+</script>
 
 <style scoped>
 
@@ -26,8 +56,6 @@
   font-family: "Comic Sans MS", cursive, sans-serif ;
   width: 100%;
   height: 100%;
-  /*box-shadow :0 4px 8px 0 rgb(0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 1);*/
-  /*box-shadow :  1 8px 16px 0 rgba(0,0,0,1);*/
   opacity: 1 !important;
 }
 
@@ -61,7 +89,7 @@
   height: auto;
 }
 
-#columnRight{
+.columnRight{
   width:20%  !important;
   text-align : center;
   height: auto;

@@ -18,7 +18,9 @@ Vue.use(Vuex);
       rooms : {
           admin : [] ,
           participated : []
-      }
+      } ,
+
+      successfulRoomJoining : false ,
   },
 
   //Mutations
@@ -37,6 +39,18 @@ Vue.use(Vuex);
             state.rooms = payload
           }
         },
+      indexCreatedRoom(state, payload){
+        state.rooms.admin.push(payload)
+      },
+      indexJoinedRoom(state, payload){
+        state.rooms.participated.push(payload)
+      },
+      setRoomExams(state, room_id, payload) {
+        let room = state.rooms.admin.find(room => room.id == room_id)
+        room.exams.push(payload)
+        room = state.rooms.participated.find(room => room.id == room_id)
+        room.exams.push(payload)
+      }
   },
 
 
@@ -50,6 +64,7 @@ Vue.use(Vuex);
       }).then(res => {
         console.log(res)
         localStorage.setItem('token', res.data.token) // save token into localstorage
+        console.log(`Login Token : ${res.data.token}` )
         // localStorage.setItem('statuscode',res.status)
         context.commit('setUserData', res.data) // create related cafe classes
         if(res.status == 200){
@@ -115,7 +130,7 @@ Vue.use(Vuex);
               }
 			}).then(res => {
         console.log(res)
-        context.commit('indexCreatedRoom', res.data)
+        //context.commit('indexCreatedRoom', res.data)
 			}).catch(err => {
 				context.state.localLoading = false // deactive loading mode
 				if (err.response) {
@@ -127,12 +142,15 @@ Vue.use(Vuex);
 			})
     },
     joinRoom(context, payload) {
+      this.state.successfulRoomJoining = false;
       mixin.methods.request({
 				url: 'room/' + payload + '/user/' + context.state.user.id + '/join/',
         method: 'POST',
       }).then(res => {
         console.log(res)
-        context.commit('indexJoinedRoom', res.data)
+        this.state.successfulRoomJoining = true;
+        //context.commit('indexJoinedRoom', res.data)
+
 			}).catch(err => {
 				context.state.localLoading = false // deactive loading mode
 				if (err.response) {
@@ -272,7 +290,8 @@ Vue.use(Vuex);
           }
         })
       });
-    }
+    },
+
   },//end of actions
 
 

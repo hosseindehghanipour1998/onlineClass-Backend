@@ -6,7 +6,7 @@
             <input class="inputStyle" disabled :value="'Class Title : ' + classDetails.classData.name">
             <input class="inputStyle" disabled :value="'Class Link : ' + classDetails.classData.link">
             <textarea class="inputStyle pa2 " style="resize: none;color:red;" rows="6"  disabled :value="classDetails.classData.description"></textarea>
-            <input class="inputStyle" style="width : 20% ; color : cyan; text-align:center;" disabled :value="classDetails.UserRole">
+            <input class="inputStyle" style="width : 40% ; color : cyan; text-align:center;" disabled :value="classDetails.UserRole">
 
         </div>
 

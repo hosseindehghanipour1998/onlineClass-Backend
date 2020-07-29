@@ -46,8 +46,12 @@ export default {
                 }
             );
         })
+        console.log(this.$store.state.rooms['admin'].length)
+        console.log(this.$store.state.rooms['participated'].length)
 
         this.$store.state.rooms['participated'].forEach(item => {
+            console.log("Participant")
+            console.log(item)
             this.globalCounter ++ ;
             this.items.push(
                 {

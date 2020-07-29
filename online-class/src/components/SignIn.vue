@@ -30,8 +30,8 @@ export default {
     data(){
       return{
         form : {
-          username: "mohammaddp007",
-          password : "Hossein@1998",
+          username: "SssX",
+          password : "Hossein123",
         }
       }
 
@@ -43,6 +43,7 @@ export default {
       },
 
       onLogin(event){
+        localStorage.removeItem('token')
         event.preventDefault();
         this.$store.dispatch('login',this.form);
         let userData = localStorage.getItem('statuscode');
