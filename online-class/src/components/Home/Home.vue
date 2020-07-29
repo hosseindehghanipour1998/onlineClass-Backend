@@ -44,6 +44,10 @@
                             <CreateQuizLayout ></CreateQuizLayout>
                         </div>
 
+                        <div v-if=" pageNo === availableComponents.ListCoursesLayout">
+                            <ClassLister ></ClassLister>
+                        </div>
+
                     </div>
 
 
@@ -65,6 +69,7 @@ import QuizQuestion from '../QuizQuestion/QuizQuestion.vue';
 import QuizQuestionsLister from '../QuizQuestionsLister/QuizQuestionsLister.vue';
 import CreateQuizLayout from '../CreateQuizLayout/CreateQuizLayout.vue';
 import Particles from '../Particles/Particles.vue';
+import ClassLister from '../ClassLister/ClassLister.vue';
 export default {
     components: {
         SideBar,
@@ -78,7 +83,8 @@ export default {
         QuizQuestion,
         QuizQuestionsLister,
         CreateQuizLayout,
-        Particles
+        Particles,
+        ClassLister
 
     },
     /*
@@ -152,7 +158,10 @@ export default {
                 //Join Class
                 this.pageNo = this.availableComponents.CreateQuizLayout;
             }
-
+            if( wantedPage === "LC" ){
+                //Join Class
+                this.pageNo = this.availableComponents.ListCoursesLayout;
+            }
             else{
                 this.pageNo == "+";
             }

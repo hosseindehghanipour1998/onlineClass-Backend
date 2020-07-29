@@ -30,9 +30,9 @@ export default {
   data(){
     return{
       classRoom : {
-        classHash : " " ,
-        classTitle : " ",
-        classDescription:" "
+        classHash : "" ,
+        classTitle : "",
+        classDescription:""
       }
 
     }
