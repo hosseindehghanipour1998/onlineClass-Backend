@@ -65,6 +65,9 @@ export default {
     }
 
   },
+  ondestroy(){
+    localStorage.removeItem('token')
+  },
   watch: {
     user: {
       deep: true,

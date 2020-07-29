@@ -35,17 +35,29 @@ export default {
     },
     mounted(){
         this.$store.dispatch('getUserRooms')
+        //console.log(this.$store.state.rooms)
         this.$store.state.rooms['admin'].forEach(item => {
             this.globalCounter ++ ;
-
             this.items.push(
                 {
                     classCounter : this.globalCounter ,
-                    classData : item
+                    classData : item,
+                    UserRole : "Admin"
                 }
             );
-            console.log(item)
         })
+
+        this.$store.state.rooms['participated'].forEach(item => {
+            this.globalCounter ++ ;
+            this.items.push(
+                {
+                    classCounter : this.globalCounter ,
+                    classData : item,
+                    UserRole : "Participant"
+                }
+            );
+        })
+
 
     }
 }
