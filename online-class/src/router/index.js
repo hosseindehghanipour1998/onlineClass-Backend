@@ -34,7 +34,7 @@ const routes = [
     component: SUSI,
   },
   {
-    path: "/",
+    path: "/home",
     name: "Home",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route

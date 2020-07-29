@@ -15,9 +15,9 @@ Vue.use(Vuex);
           email : null ,
       },
 
-      classes : {
-          asAdmin : [] ,
-          asParticipant : []
+      rooms : {
+          admin : [] ,
+          participated : []
       }
   },
 
@@ -32,9 +32,9 @@ Vue.use(Vuex);
           this.state.user.isLogedin = true
           this.state.user.email = payload.user.email
         },
-      setUserClasses(state, payload){
+      setUserRooms(state, payload){
           if(payload != undefined){
-            state.classes = payload
+            state.rooms = payload
           }
         },
   },
@@ -80,7 +80,7 @@ Vue.use(Vuex);
 				context.state.localLoading = false // deactive loading mode
 				if (err.response) {
           console.log(err.response)
-          alert("Username or Email Already Exists")
+          alert("Username or Email not Unique")
 					if (err.response.status == 400) {
 						console.log({ message: 'اطلاعات ورودی معتبر نیست' })
 					}

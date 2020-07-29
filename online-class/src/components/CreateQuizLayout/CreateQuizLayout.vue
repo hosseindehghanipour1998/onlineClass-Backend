@@ -66,6 +66,8 @@ export default {
                     this.inputs[i].questionNo = i+1;
                 }
             }
+        },
+        createQuiz(){
 
         }
     }

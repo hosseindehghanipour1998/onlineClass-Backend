@@ -59,6 +59,9 @@ export default {
     saveForm(){
         event.preventDefault();
         this.$store.dispatch('createRoom',this.classRoom);
+        this.resetForm();
+        alert("Class Created Successfully");
+
     }
 
   }

@@ -1,8 +1,8 @@
 <template>
     <div class="father">
         <div class="mother">
-            <div class="child" style="grow" v-for="item in items" v-bind:key="item">
-                    <ClassListView></ClassListView>
+            <div class="child" style="grow" v-for="item in items" v-bind:key="item.classCounter">
+                    <ClassListView :classDetails="item"></ClassListView>
             </div>
         </div>
 
@@ -16,19 +16,37 @@ export default {
         ClassListView
     },
     props : {
-        allUsers : [
-                {Name : "Hossein Dehghanipour" , Email:"XXX@gmail.com" , id:"123"},
-                {Name : "Mohammad Dehghanipour" , Email:"YYY@gmail.com" , id:"456"},
-                {Name : "Reza Dehghanipour" , Email:"ZZZZ@gmail.com" , id:"789"},
-                {Name : "gholam Dehghanipour" , Email:"BBB@gmail.com" , id:"5657"}
-            ]
     },
 
     data(){
         return{
-            items : [1,2,3,4,5,6,7],
+            globalCounter : 1,
+            items : [
+
+                // {
+                //     classIndex : 0,
+                //     className : "" ,
+                //     classDescription : "",
+                //     classHash : "" ,
+                // }
+            ],
 
         }
+    },
+    mounted(){
+        this.$store.dispatch('getUserRooms')
+        this.$store.state.rooms['admin'].forEach(item => {
+            this.globalCounter ++ ;
+
+            this.items.push(
+                {
+                    classCounter : this.globalCounter ,
+                    classData : item
+                }
+            );
+            console.log(item)
+        })
+
     }
 }
 </script>

@@ -120,6 +120,9 @@ export default {
             // already being observed
 
         },
+    // beforeDestroy() {
+    //     localStorage.removeItem('token');
+    // },
     computed: {
         activeComponent: function () {
             // `this` points to the vm instance
@@ -133,7 +136,10 @@ export default {
             }
 
             if ( wantedPage === 'LogOutWanted' ){
-                this.pageNo == this.availableComponents.Test;
+                //this.pageNo == this.availableComponents.Test;
+                //this.$router.push('/login');
+                localStorage.removeItem('token');
+                this.$store.user.isLoggedIn = false;
             }
 
             if( wantedPage === "LU" ){

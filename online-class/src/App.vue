@@ -71,7 +71,7 @@ export default {
 
       handler(newValue){
         if (newValue.isLogedin){
-          this.$router.push('/')
+          this.$router.push('/home')
           this.$store.dispatch('getUserRooms')
         }
       }

@@ -1,22 +1,5 @@
 <template>
-<!--
-<div>
-     <form>
-        <p>Sign in</p>
-        <label>
-        Your email
-        </label>
-        <input type="email" class="inputStyle" />
-        <br />
-        <label >Your password</label>
-        <input type="password" class="inputStyle"/>
 
-        <div >
-            <button  className="buttonStyle" type="submit"  class="buttonStyle">Login</button>
-        </div>
-    </form>
-</div>
--->
 
 <div class="SignInAlignment">
 <main class="pa4 black-80">
