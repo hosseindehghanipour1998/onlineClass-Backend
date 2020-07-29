@@ -3,6 +3,8 @@
 
 <div class="LittleBrother">
     <input class="inputStyle" style="width:60%; min-height:3%;" placeholder="Quiz Name" />
+    <input class="inputStyle" style="width:60%; min-height:3%;" placeholder="Class Hashcode" />
+
 </div>
 <hr class="vl"/>
 
@@ -54,16 +56,17 @@ export default {
                     answerText : "",
                 });
 
-
-
         },
         remove(index) {
-            console.log(`Delete at index : ${index-1}`)
-            this.inputs.splice(index-1, 1);
-            this.globalQuestionCounter--;
-            for ( let i = 0 ; i < this.inputs.length; i++){
-                this.inputs[i].questionNo = i+1;
+            if ( index > 1 ){
+                console.log(`Delete at index : ${index-1}`)
+                this.inputs.splice(index-1, 1);
+                this.globalQuestionCounter--;
+                for ( let i = 0 ; i < this.inputs.length; i++){
+                    this.inputs[i].questionNo = i+1;
+                }
             }
+
         }
     }
 }
@@ -142,6 +145,7 @@ div{
 	transition-duration: 0.4s;
     border: 2px solid #008CBA;
     width: 100%;
+    margin:2px;
     font-size: 1.5rem;
 }
 
