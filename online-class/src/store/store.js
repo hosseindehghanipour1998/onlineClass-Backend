@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import mixin from '../mixin';
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
+ export const store = new Vuex.Store({
   state : {
       user:{
           id : null ,
@@ -286,3 +286,6 @@ export const store = new Vuex.Store({
     }
   },// ende of getters
 })
+
+
+export default store;

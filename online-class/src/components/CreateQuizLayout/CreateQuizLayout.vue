@@ -6,14 +6,14 @@
 </div>
 <hr class="vl"/>
 
- <div class="mother" v-for="(input,k) in inputs" :key="k">
+ <div class="mother" v-for="question in this.inputs" :key="question.questionNo">
      <div class="oldBrother">
         <span class="leftSpan">
-            <CreateQuizLayoutQuestion :QuestionNo="k"> </CreateQuizLayoutQuestion>
+            <CreateQuizLayoutQuestion  :passedQuestion="question"> </CreateQuizLayoutQuestion>
         </span>
         <span class="rightSpan">
-            <button class="buttonStyle" @click="remove(k)" v-show="k || ( !k && inputs.length > 1)">Remove  </button>
-            <button class="buttonStyle" @click="add(k)" v-show="k == inputs.length-1"> Add</button>
+            <button class="buttonStyle" @click="remove(question.questionNo)" v-show="question.questionNo || ( !question.questionNo && inputs.length > 1)">Remove  </button>
+            <button class="buttonStyle" @click="add()" v-show="question.questionNo-1 == inputs.length-1"> Add</button>
         </span>
     </div>
 
@@ -33,25 +33,37 @@ export default {
     },
     data(){
         return{
-            question : {
-                questionText : "",
-                answerText : ""
-            },
-
+            globalQuestionCounter : 1 ,
              inputs: [
                 {
-                    name: ''
+                    questionNo : 1,
+                    text : "",
+                    answerText : "",
                 }
             ]
         }
 
     },
     methods: {
-        add(index) {
-            this.inputs.push({ name: '' });
+        add() {
+            console.log(this.globalQuestionCounter);
+            this.globalQuestionCounter ++ ;
+            this.inputs.push({
+                    questionNo :  this.globalQuestionCounter,
+                    text : "",
+                    answerText : "",
+                });
+
+
+
         },
         remove(index) {
-            this.inputs.splice(index, 1);
+            console.log(`Delete at index : ${index-1}`)
+            this.inputs.splice(index-1, 1);
+            this.globalQuestionCounter--;
+            for ( let i = 0 ; i < this.inputs.length; i++){
+                this.inputs[i].questionNo = i+1;
+            }
         }
     }
 }

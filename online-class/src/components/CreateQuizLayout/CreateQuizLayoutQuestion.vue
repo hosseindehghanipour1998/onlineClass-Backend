@@ -3,9 +3,9 @@
 
 <div class="SignInAlignment">
   <form>
-        <h3 >#Q : {{this.QuestionNo + 1}} </h3>
-        <input type="text" class="inputStyle" placeholder="Question">
-        <textarea class="inputStyle pa2 " name="message" rows="6" style="width:100%;" placeholder="Your Answer Here"></textarea>
+        <h3 >#Q : {{(passedQuestion.questionNo).toString()}} </h3>
+        <input type="text" v-model="passedQuestion.text" class="inputStyle"  placeholder="Question">
+        <textarea class="inputStyle pa2 " v-model="passedQuestion.answerText"  name="message" rows="6" style="width:100%;" placeholder="Your Answer Here"></textarea>
   </form>
 </div>
 </template>
@@ -13,8 +13,10 @@
 <script>
 export default {
     props:{
-        QuestionNo :String
-
+      passedQuestion: {
+        type: Object,
+        required: true
+      }
     }
 }
 </script>

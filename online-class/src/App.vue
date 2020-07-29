@@ -1,7 +1,7 @@
 <template>
   <div id="app" >
     <particles></particles>
-    <div style="width:100% ; height:100%;">
+    <div class = "grandPa" style="width:100% ; height:100%;">
       <router-view />
    </div>
 
@@ -90,6 +90,12 @@ export default {
 };
 </script>
 <style>
+.grandPa{
+  position: absolute;
+  left: 0;
+  top:0;
+}
+
 #app {
 
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
