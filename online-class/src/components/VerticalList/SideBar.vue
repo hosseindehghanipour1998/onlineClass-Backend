@@ -14,19 +14,17 @@
 
 <script>
 export default {
-    props: {
-
-    },
     data() {
         return{
             sideBarItems :
             [
-                {Text : "Create Quiz" , Emit : "CQ" },
-                {Text :"List Quizes", Emit : "LQ"},
-                {Text :"Create Class", Emit : "CC"},
+                {Text : "Create Quiz" , Emit : "CQ"},
+                {Text :"List Quizes", Emit : "LQ" },
+                {Text :"Create Class", Emit : "CC" },
                 {Text :"List Classes", Emit : "LC"},
                 {Text :"Join Class", Emit : "JC"},
-                {Text :"List Users",Emit : "LU"}
+                {Text :"List Users",Emit : "LU"},
+                {Text :"Return Back",Emit : "RB"}
             ],
             selectedButton : 0 ,
             myStyle:{
@@ -37,7 +35,7 @@ export default {
     methods:{
         updatePage(data,index,item){
             this.$emit("ComponentRouter",data);
-            console.log(data);
+            //console.log(data);
         }
     }
 }

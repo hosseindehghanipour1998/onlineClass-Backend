@@ -13,7 +13,7 @@
                 <div id="lowerRow"  >
 
                     <div id="leftbox">
-                        <SideBar v-on:ComponentRouter="updatePage($event)"></SideBar>
+                        <SideBar  v-on:ComponentRouter="updatePage($event)"></SideBar>
                     </div>
 
                     <div  id="rightbox">
@@ -113,6 +113,7 @@ export default {
             pageNo : '+',
 
 
+
         }
     },
     created(){
@@ -167,10 +168,23 @@ export default {
             if( wantedPage === "LC" ){
                 //Join Class
                 this.pageNo = this.availableComponents.ListCoursesLayout;
+
+
+            }
+            if( wantedPage === "RB" ){
+                //Join Class
+                this.pageNo = this.availableComponents.ListCoursesLayout;
+                this.$store.state.classStatus = false ;
+
             }
             else{
                 this.pageNo == "+";
             }
+        }
+    },
+    computed:{
+        classStatus(){
+            return this.inClassStatus
         }
     }
 

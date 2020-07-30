@@ -86,7 +86,7 @@ export default {
     },
     roomsLength(newValue) {
       if(newValue) {
-        this.$store.dispatch('getRoomsExams')
+        //this.$store.dispatch('getRoomsExams')
       }
     }
   }

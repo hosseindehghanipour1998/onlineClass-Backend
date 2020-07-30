@@ -9,9 +9,9 @@
           <input  class="buttonStyle columnRight" value="Search" >
           <input class="buttonStyle columnRight" v-on:click="joinClass" value="Join" >
         </div>
-        <div class="otherColumns">
+        <!-- <div class="otherColumns">
         <input class="inputStyle pa5 "   style="width:100%;text-align:center;" v-model="msg" placeholder="Status">
-        </div>
+        </div> -->
 
   </form>
 </div>
@@ -23,21 +23,12 @@ export default {
 
   data(){
     return {
-      roomLink : "" ,
-      msg : " " ,
+      roomLink : '' ,
     }
   },
   methods: {
     joinClass(){
-      this.$store.dispatch('joinRoom',this.roomLink);
-      let joined = this.$store.state.successfulRoomJoining ;
-      if ( joined ){
-        this.msg = "Successfully Joined"
-      }
-      else {
-        this.msg = "Unable to Join"
-      }
-
+      this.$store.dispatch('joinRoom', this.roomLink)
     }
   },
   mounted() {

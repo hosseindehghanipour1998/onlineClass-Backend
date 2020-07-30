@@ -15,11 +15,10 @@ Vue.use(Vuex);
           email : null ,
       },
 
-      rooms : {
-          admin : [] ,
-          participated : []
-      } ,
+      rooms : [],
 
+      allRooms : null ,
+      classStatus :false ,
       successfulRoomJoining : false ,
   },
 
@@ -35,10 +34,15 @@ Vue.use(Vuex);
           this.state.user.email = payload.user.email
         },
       setUserRooms(state, payload){
+        state.rooms = []
           if(payload != undefined){
             state.rooms = payload
           }
         },
+      userRoomsUpdate(state,payload){
+        state.allRooms = payload;
+
+      },
       indexCreatedRoom(state, payload){
         state.rooms.admin.push(payload)
       },
@@ -55,6 +59,7 @@ Vue.use(Vuex);
 
 
   actions :{
+
     login(context, payload) {
       localStorage.setItem('statuscode',"")
       mixin.methods.baseRequest({	// login user api call
@@ -82,6 +87,7 @@ Vue.use(Vuex);
         }
       })
     },
+
     register(context, payload) {
       mixin.methods.baseRequest({
 				url: 'user/create/',
@@ -102,13 +108,18 @@ Vue.use(Vuex);
 				}
 			})
     },
+
     getUserRooms(context) {
+      let userID = context.state.user.id
       mixin.methods.request({
-				url: 'rooms/'+ context.state.user.id +'/',
+				url: 'rooms/'+ userID +'/',
 				method: 'GET',
 			}).then(res => {
-        console.log(res)
+        console.log("Rooms Received : ")
+        console.log( res.data)
         context.commit('setUserRooms', res.data)
+        //context.commit('userRoomsUpdate', res.data)
+
 			}).catch(err => {
 				context.state.localLoading = false // deactive loading mode
 				if (err.response) {
@@ -141,26 +152,19 @@ Vue.use(Vuex);
 				}
 			})
     },
+
     joinRoom(context, payload) {
-      this.state.successfulRoomJoining = false;
+      let userID = context.state.user.id+1
       mixin.methods.request({
-				url: 'room/' + payload + '/user/' + context.state.user.id + '/join/',
+				url: 'room/' + payload + '/user/' + userID + '/join/',
         method: 'POST',
       }).then(res => {
         console.log(res)
-        this.state.successfulRoomJoining = true;
-        //context.commit('indexJoinedRoom', res.data)
-
 			}).catch(err => {
 				context.state.localLoading = false // deactive loading mode
-				if (err.response) {
-					console.log(err.response)
-					if (err.response.status == 400) {
-						console.log({ message: 'اطلاعات ورودی معتبر نیست' })
-					}
-				}
 			})
     },
+
     createExam(context, payload) {
       mixin.methods.request({
 				url: 'exam/create/',
@@ -179,6 +183,7 @@ Vue.use(Vuex);
 				}
 			})
     },
+
     getRoomExam(context, room_id) {
       mixin.methods.request({
         url: 'exams/'+ room_id +'/',
@@ -196,6 +201,7 @@ Vue.use(Vuex);
         }
       })
     },
+
     getRoomsExams(context) {
       context.state.rooms.admin.forEach(room => {
         mixin.methods.request({
@@ -232,6 +238,7 @@ Vue.use(Vuex);
         })
       });
     },
+
     getRoomUsers(context, room) {
       room.adminProfiles = []
       room.participateProfiles = []
@@ -271,6 +278,7 @@ Vue.use(Vuex);
         })
       });
     },
+
     addAdmins(context, {room, admins}) {
       console.log(room);
       console.log(admins);

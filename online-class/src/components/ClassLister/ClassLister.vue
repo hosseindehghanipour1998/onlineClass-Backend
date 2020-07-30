@@ -35,7 +35,10 @@ export default {
     },
     mounted(){
         this.$store.dispatch('getUserRooms')
-        //console.log(this.$store.state.rooms)
+        //console.log(this.$store.state.rooms['admin'].length)
+        console.log(this.$store.state.rooms)
+        console.log("All Rooms")
+        console.log(this.$store.state.rooms.admin)
         this.$store.state.rooms['admin'].forEach(item => {
             this.globalCounter ++ ;
             this.items.push(
@@ -46,12 +49,9 @@ export default {
                 }
             );
         })
-        console.log(this.$store.state.rooms['admin'].length)
-        console.log(this.$store.state.rooms['participated'].length)
-
         this.$store.state.rooms['participated'].forEach(item => {
-            console.log("Participant")
-            console.log(item)
+            //console.log("Participant")
+            //console.log(item)
             this.globalCounter ++ ;
             this.items.push(
                 {
