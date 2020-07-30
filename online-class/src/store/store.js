@@ -183,11 +183,14 @@ Vue.use(Vuex);
       }).then(res => {
         console.log(res)
         //context.dispatch('getRoomExam', res.data.room)
+        alert("Exam Created SuccessFully")
 			}).catch(err => {
 				context.state.localLoading = false // deactive loading mode
 				if (err.response) {
-					console.log(err.response)
+          console.log(err.response)
+
 					if (err.response.status == 400) {
+            alert("Unable To Create The Exam")
 						console.log({ message: 'اطلاعات ورودی معتبر نیست' })
 					}
 				}

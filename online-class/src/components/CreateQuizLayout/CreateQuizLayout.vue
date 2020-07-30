@@ -1,20 +1,21 @@
 <template>
     <div class="father">
         <div class="LittleBrother">
-            <input class="inputStyle" style="width:60%; min-height:3%;" placeholder="Quiz Name" />
-            <input class="inputStyle" style="width:60%; min-height:3%;" placeholder="Class Hashcode" />
+            <input class="inputStyle" style="width:60%; min-height:3%;" v-model="exam.title" placeholder="Quiz Name" />
+            <input class="inputStyle" type="number" style="width:60%; min-height:3%;" v-model="exam.classRoomID" placeholder="Class ID" />
+<!--
             <div class="row">
 
                 <div class="column">
                     From :
-                    <input class="inputStyle2" type="datetime-local"   />
+                    <input v-model="this.start_date" class="inputStyle2" type="date"   />
                 </div>
 
                 <div class="column">
                      To :
                     <input class="inputStyle2" type="datetime-local"   />
                 </div>
-            </div>
+            </div> -->
 
         </div>
         <hr class="vl"/>
@@ -31,8 +32,10 @@
             </div>
 
         </div>
-        <div class="LittleBrother">
-            <button class="glow-on-hover" style="width:60%;"> Create </button>
+        <div class="row">
+            <button class="glow-on-hover column " v-on:click="submitExam()" style="width:60%;margin:2px;" disabled> Create </button>
+            <button class="glow-on-hover column"  v-on:click="draftExam()" style="width:60%;margin:2px;" > Draft </button>
+            <button class="glow-on-hover column"  v-on:click="resetExam()" style="width:60%;margin:2px;" > Reset </button>
         </div>
 
     </div>
@@ -46,6 +49,12 @@ export default {
     },
     data(){
         return{
+            exam :{
+                title : '',
+                classRoomID : 0 ,
+                questions : []
+
+            },
             globalQuestionCounter : 1 ,
             inputs: [
                 {
@@ -54,11 +63,6 @@ export default {
                     answerText : "",
                 }
             ],
-            // exam : {
-            //     questions ,
-            //     title ,
-
-            // }
         }
 
     },
@@ -73,16 +77,8 @@ export default {
                 });
 
         },
-        // submitExam() {
-        //     let payload = this.exam
-        //     payload.start_time = this.start_datetime
-        //     payload.end_time = this.end_datetime
-        //     payload.room = 1
-        //     this.$store.dispatch('createExam', payload)
-        //     this.$bvModal.hide('create-exam-modal')
-        // },
         remove(index) {
-            if ( index > 1 ){
+            if ( index > 1 || this.inputs.length > 1 ){
                 console.log(`Delete at index : ${index-1}`)
                 this.inputs.splice(index-1, 1);
                 this.globalQuestionCounter--;
@@ -91,9 +87,46 @@ export default {
                 }
             }
         },
-        createQuiz(){
-
+        submitExam() {
+            let payload = this.exam
+            payload.questions = this.inputs
+            console.log(payload)
+            this.$store.dispatch('createExam', payload)
+            //this.$bvModal.hide('create-exam-modal')
+        },
+        draftExam() {
+            let payload = this.exam
+            payload.questions = this.inputs
+            console.log(payload)
+            localStorage.setItem("draftExam",JSON.stringify(payload))
+            localStorage.setItem("Draf","1")
+            //this.$store.dispatch('createExam', payload)
+            //this.$bvModal.hide('create-exam-modal')
+        },
+        resetExam(){
+            localStorage.removeItem("draftExam")
+            localStorage.removeItem("Draf")
+            this.exam.title = ''
+            this.exam.classRoomID = ''
+            this.inputs = [
+                {
+                    questionNo : 1,
+                    text : "",
+                    answerText : "",
+                }
+            ]
         }
+    },// end of methods
+
+    mounted(){
+        let anyDrafts = localStorage.getItem("Draf") ;
+        if (anyDrafts == "1"){
+            let payload =JSON.parse(localStorage.getItem("draftExam"))
+            this.exam.title = payload.title;
+            this.exam.classRoomID = payload.classRoomID;
+            this.inputs = payload.questions;
+        }
+
     }
 }
 </script>
@@ -132,7 +165,7 @@ export default {
 }
 
 .column{
-    width:auto !important;
+    width:25% !important;
     height: auto;
     justify-content: space-evenly;
     margin:5px !important;
