@@ -5,13 +5,15 @@
         </div>
 
         <div id="infoChild">
-            <h1 class="inputStyle"> John Doe </h1>
-            <h1 class="inputStyle">hh</h1>
-            <h1 class="inputStyle"> id : 22345 </h1>
+            <input class="inputStyle" disabled value="QuizName :  | ID : ">
+            <input class="inputStyle" disabled value="ClassName :  | ID : ">
+            <input class="inputStyle" disabled value="Class Hash :  ">
+            <input class="inputStyle" disabled value="Number of Questions ">
+            <input class="inputStyle" disabled value="Total Points :  ">
         </div>
 
         <div class="iconHolder">
-            <img src="./actions.png" class="icon"/>
+            <button  class="glow-on-hover  icon" >Take</button>
         </div>
     </div>
 </template>
@@ -26,18 +28,21 @@ export default {
 }
 </script>
 <style scoped>
-
+@import '../../CSSFiles/glowButtonStyle.css';
 
 .inputStyle {
     color: blanchedalmond !important;
-    border-radius: 12px;
+    border-radius: 7px;
 	background-color: #01142F ;
     background-color: #01142F!important;
 	transition-duration: 0.4s;
     border: 2px solid #008CBA;
     width: 100%;
-    height: 33.33%;
+    height: auto;
+    padding : 2px;
     font-size: 1rem;
+    text-align:center;
+    margin:2px;
 }
 
 #father{
@@ -72,22 +77,15 @@ export default {
     text-align: left;
     justify-content: space-around;
     height: 100%;
-    width : 40%;
+    width : 50%;
     text-align: center;
 }
 
 .icon{
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     order:1;
-    width: 40px;
-    height: 40px;
-    background-color: white;
-    border:1px solid black;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    border-radius: 50%;
 }
 h1{
     padding:2px;
@@ -98,8 +96,9 @@ h1{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    width: 20%;
+    width: 10%;
     height: 100%;
+    margin : 3px;
 
 
 }
