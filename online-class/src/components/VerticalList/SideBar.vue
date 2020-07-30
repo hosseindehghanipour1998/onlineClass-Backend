@@ -23,8 +23,6 @@ export default {
                 {Text :"Create Class", Emit : "CC" },
                 {Text :"List Classes", Emit : "LC"},
                 {Text :"Join Class", Emit : "JC"},
-                {Text :"List Users",Emit : "LU"},
-                {Text :"Return Back",Emit : "RB"}
             ],
             selectedButton : 0 ,
             myStyle:{

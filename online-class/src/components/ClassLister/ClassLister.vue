@@ -36,8 +36,7 @@ export default {
     mounted(){
         this.$store.dispatch('getUserRooms')
         //console.log(this.$store.state.rooms['admin'].length)
-        console.log(this.$store.state.rooms)
-        console.log("All Rooms")
+        //console.log(this.$store.state.rooms)
         console.log(this.$store.state.rooms.admin)
         this.$store.state.rooms['admin'].forEach(item => {
             this.globalCounter ++ ;
