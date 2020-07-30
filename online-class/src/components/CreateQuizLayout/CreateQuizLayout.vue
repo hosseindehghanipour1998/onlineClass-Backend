@@ -1,30 +1,41 @@
 <template>
-<div class="father">
+    <div class="father">
+        <div class="LittleBrother">
+            <input class="inputStyle" style="width:60%; min-height:3%;" placeholder="Quiz Name" />
+            <input class="inputStyle" style="width:60%; min-height:3%;" placeholder="Class Hashcode" />
+            <div class="row">
 
-<div class="LittleBrother">
-    <input class="inputStyle" style="width:60%; min-height:3%;" placeholder="Quiz Name" />
-    <input class="inputStyle" style="width:60%; min-height:3%;" placeholder="Class Hashcode" />
+                <div class="column">
+                    From :
+                    <input class="inputStyle2" type="datetime-local"   />
+                </div>
 
-</div>
-<hr class="vl"/>
+                <div class="column">
+                     To :
+                    <input class="inputStyle2" type="datetime-local"   />
+                </div>
+            </div>
 
- <div class="mother" v-for="question in this.inputs" :key="question.questionNo">
-     <div class="oldBrother">
-        <span class="leftSpan">
-            <CreateQuizLayoutQuestion  :passedQuestion="question"> </CreateQuizLayoutQuestion>
-        </span>
-        <span class="rightSpan">
-            <button class="buttonStyle" @click="remove(question.questionNo)" v-show="question.questionNo || ( !question.questionNo && inputs.length > 1)">Remove  </button>
-            <button class="buttonStyle" @click="add()" v-show="question.questionNo-1 == inputs.length-1"> Add</button>
-        </span>
+        </div>
+        <hr class="vl"/>
+
+        <div class="mother" v-for="question in this.inputs" :key="question.questionNo">
+            <div class="oldBrother">
+                <span class="leftSpan">
+                    <CreateQuizLayoutQuestion  :passedQuestion="question"> </CreateQuizLayoutQuestion>
+                </span>
+                <span class="rightSpan">
+                    <button class="buttonStyle" @click="remove(question.questionNo)" v-show="question.questionNo || ( !question.questionNo && inputs.length > 1)">Remove  </button>
+                    <button class="buttonStyle" @click="add()" v-show="question.questionNo-1 == inputs.length-1"> Add</button>
+                </span>
+            </div>
+
+        </div>
+        <div class="LittleBrother">
+            <button class="glow-on-hover" style="width:60%;"> Create </button>
+        </div>
+
     </div>
-
-</div>
-<div class="LittleBrother">
-    <button class="glow-on-hover" style="width:60%;"> Create </button>
-</div>
-
-</div>
 </template>
 
 <script>
@@ -36,13 +47,18 @@ export default {
     data(){
         return{
             globalQuestionCounter : 1 ,
-             inputs: [
+            inputs: [
                 {
                     questionNo : 1,
                     text : "",
                     answerText : "",
                 }
-            ]
+            ],
+            // exam : {
+            //     questions ,
+            //     title ,
+
+            // }
         }
 
     },
@@ -57,6 +73,14 @@ export default {
                 });
 
         },
+        // submitExam() {
+        //     let payload = this.exam
+        //     payload.start_time = this.start_datetime
+        //     payload.end_time = this.end_datetime
+        //     payload.room = 1
+        //     this.$store.dispatch('createExam', payload)
+        //     this.$bvModal.hide('create-exam-modal')
+        // },
         remove(index) {
             if ( index > 1 ){
                 console.log(`Delete at index : ${index-1}`)
@@ -79,6 +103,44 @@ export default {
   border: 2px solid white;
   width: 100%;
 }
+
+.row {
+    display: flex;
+    direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+
+.inputStyle2 {
+    color: blanchedalmond ;
+    background-color: #9dc5c3;
+    background-image: linear-gradient(315deg, #9dc5c3 0%, #5e5c5c 74%);
+	transition-duration: 0.4s;
+    border: 2px solid #008CBA;
+    width: 100%;
+    margin:2px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    text-align: center;
+}
+.inputStyle2:hover {
+    background-color: #ffa69e;
+    background-image: linear-gradient(315deg, #ffa69e 0%, #5d4954 74%);
+
+}
+
+.column{
+    width:auto !important;
+    height: auto;
+    justify-content: space-evenly;
+    margin:5px !important;
+    padding:3px !important;
+    color: #9dc5c3;
+}
+
+
 .buttonStyle{
   border-radius: 12px;
   background-color: powderblue!important;
@@ -141,13 +203,14 @@ div{
 }
 .inputStyle {
     color: blanchedalmond !important;
-    border-radius: 12px;
+    border-radius: 8px;
 	background-color: #01142F ;
     background-color: #01142F!important;
 	transition-duration: 0.4s;
     border: 2px solid #008CBA;
     width: 100%;
     margin:2px;
+    text-align:center;
     font-size: 1.5rem;
 }
 

@@ -99,7 +99,5 @@ h1{
     width: 10%;
     height: 100%;
     margin : 3px;
-
-
 }
 </style>

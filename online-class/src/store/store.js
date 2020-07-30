@@ -16,9 +16,6 @@ Vue.use(Vuex);
       },
 
       rooms : [],
-
-      specificRoomAdmins : [],
-      specificRoomUsers : [],
       specificRoomMembers : [],
       classStatus :false ,
       successfulRoomJoining : false ,
@@ -185,7 +182,7 @@ Vue.use(Vuex);
         data: payload
       }).then(res => {
         console.log(res)
-        context.dispatch('getRoomExam', res.data.room)
+        //context.dispatch('getRoomExam', res.data.room)
 			}).catch(err => {
 				context.state.localLoading = false // deactive loading mode
 				if (err.response) {

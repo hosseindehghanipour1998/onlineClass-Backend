@@ -16,12 +16,7 @@ export default {
         QuizQuestion
     },
     props : {
-        allUsers : [
-                {Name : "Hossein Dehghanipour" , Email:"XXX@gmail.com" , id:"123"},
-                {Name : "Mohammad Dehghanipour" , Email:"YYY@gmail.com" , id:"456"},
-                {Name : "Reza Dehghanipour" , Email:"ZZZZ@gmail.com" , id:"789"},
-                {Name : "gholam Dehghanipour" , Email:"BBB@gmail.com" , id:"5657"}
-            ]
+
     },
 
     data(){
