@@ -55,10 +55,13 @@ export default {
     height: auto;
     border:2px solid white;
     border-radius: 5px;
-    background-color:gray ;
+    background-color: #0cbaba;
+    background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+
 }
 
 .child:hover{
-    background-color: gold;
+    background-color: #29539b;
+    background-image: linear-gradient(315deg, #29539b 0%, #1e3b70 74%);
 }
 </style>

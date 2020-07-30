@@ -18,7 +18,9 @@
         </div>
 
         <div class="iconHolder">
-            <img src="./actions.png" class="icon"/>
+            <!-- <img src="./actions.png" class="icon"/> -->
+            <button class="glow-on-hover icon"  disabled >P</button>
+            <button class="glow-on-hover icon"  disabled > - </button>
         </div>
     </div>
 </template>
@@ -40,6 +42,7 @@ export default {
 }
 </script>
 <style scoped>
+@import '../../CSSFiles/glowButtonStyle.css';
 .finalRow{
     width: 100%;
     display: flex;
@@ -105,16 +108,14 @@ textarea{
 
 .icon{
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     order:1;
     width: 40px;
     height: 40px;
-    background-color: white;
     border:1px solid black;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    border-radius: 50%;
+    margin : 3px;
+    ;
 }
 h1{
     padding:2px;
@@ -124,10 +125,16 @@ h1{
 .iconHolder{
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     align-items: flex-end;
     width: 20%;
     height: 100%;
 
 
 }
+
+
+
+
+
 </style>
