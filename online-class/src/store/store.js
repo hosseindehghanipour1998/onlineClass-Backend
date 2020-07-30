@@ -56,6 +56,16 @@ Vue.use(Vuex);
         room.exams.push(payload)
         room = state.rooms.participated.find(room => room.id == room_id)
         room.exams.push(payload)
+      },
+      changePromotedAdminRole(state , payload){
+        console.log("In Commit")
+        state.specificRoomMembers.forEach(item =>{
+          if ( item.data.id == payload ){
+            console.log("Found it")
+            console.log(item)
+            item.role = "Admin" ;
+          }
+        })
       }
   },
 
@@ -80,11 +90,12 @@ Vue.use(Vuex);
         }
 
       }).catch(err => {
+
         context.state.localLoading = false // deactive loading mode
         if (err.response) {
           console.log(err.response)
           if (err.response.status == 400) {
-            console.log({ message: 'اطلاعات ورودی معتبر نیست' })
+            alert("Invalid Username or Password")
           }
         }
       })
@@ -285,25 +296,21 @@ Vue.use(Vuex);
 
     },
 
-    addAdmins(context, {room, admins}) {
-      console.log(room);
-      console.log(admins);
-      admins.forEach(user => {
+    addAdmin(context, {roomID, userID}) {
+      //console.log(room);
+      //console.log(admin);
+        userID += 1
         mixin.methods.request({
-          url: 'room/' + room.id + '/user/'+ user +'/admin/',
+          url: 'room/' + roomID + '/user/'+ userID +'/admin/',
           method: 'POST',
         }).then(res => {
           console.log(res)
+          context.commit('changePromotedAdminRole', userID-1)
+          alert("User Promoted as Admin Successfully !!")
         }).catch(err => {
-          context.state.localLoading = false // deactive loading mode
-          if (err.response) {
-            console.log(err.response)
-            if (err.response.status == 400) {
-              console.log({ message: 'اطلاعات ورودی معتبر نیست' })
-            }
-          }
+          context.state.localLoading = false
+          alert("User Promotion Denied !")
         })
-      });
     },
 
   },//end of actions

@@ -13,7 +13,7 @@
 
 
         <div v-if="this.showUserData" class="mother">
-            <UserListerLayout ></UserListerLayout>
+            <UserListerLayout :classID="this.selectedRoomId" ></UserListerLayout>
         </div>
 
     </div>
@@ -45,6 +45,10 @@ export default {
             //console.log("Clicked on the Room => item")
             //console.log(item.classData
             //var p = new Promise((this.fetchData(item), this.changeState()) )
+            this.selectedRoomId = item.classData.id
+            //console.log(this.selectedRoomId)
+            // console.log("Selected Room Id")
+            // console.log(item.classData.id)
             this.fetchData(item)
             this.changeState()
         }
@@ -64,6 +68,7 @@ export default {
                 //     classHash : "" ,
                 // }
             ],
+            selectedRoomId : null ,
 
         }
     },
@@ -74,7 +79,8 @@ export default {
         //console.log(this.$store.state.rooms)
         //console.log(this.$store.state.rooms.admin)
         this.$store.state.rooms['admin'].forEach(item => {
-            //console.log(item)
+            // console.log("ClassInfo")
+            // console.log(item)
             this.globalCounter ++ ;
             this.items.push(
                 {
