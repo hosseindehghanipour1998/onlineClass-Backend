@@ -65,7 +65,7 @@ import UserListerLayout from '../UserListerLayout/UserListerLayout.vue';
 import QuizesLister from '../QuizesLister/QuizesLister.vue';
 import CreateClassForm from '../CreateClassForm/CreateClassForm.vue';
 import JoinClassForm from '../JoinClassForm/JoinClassForm.vue';
-import QuizQuestion from '../QuizQuestion/QuizQuestion.vue';
+import QuizQuestion from '../QuizQuestionsLister/QuizQuestion.vue';
 import QuizQuestionsLister from '../QuizQuestionsLister/QuizQuestionsLister.vue';
 import CreateQuizLayout from '../CreateQuizLayout/CreateQuizLayout.vue';
 import Particles from '../Particles/Particles.vue';

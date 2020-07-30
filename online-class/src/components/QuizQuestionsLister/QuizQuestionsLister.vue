@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import QuizQuestion from '../QuizQuestion/QuizQuestion.vue';
+import QuizQuestion from './QuizQuestion.vue';
 export default {
     components:{
         QuizQuestion
