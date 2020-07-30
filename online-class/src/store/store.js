@@ -17,7 +17,7 @@ Vue.use(Vuex);
 
       rooms : [],
 
-      allRooms : null ,
+      specificRoom : [],
       classStatus :false ,
       successfulRoomJoining : false ,
   },
@@ -115,7 +115,7 @@ Vue.use(Vuex);
 				url: 'rooms/'+ userID +'/',
 				method: 'GET',
 			}).then(res => {
-        console.log("Rooms Received : ")
+        console.log("Rooms Received (Store): ")
         console.log( res.data)
         context.commit('setUserRooms', res.data)
         //context.commit('userRoomsUpdate', res.data)
@@ -239,17 +239,18 @@ Vue.use(Vuex);
       });
     },
 
-    getRoomUsers(context, room) {
-      room.adminProfiles = []
-      room.participateProfiles = []
+    getRoomUsers(context, item) {
+      let adminProfiles = []
+      let participateProfiles = []
+      this.state.specificRoom = []
 
-      room.participate.forEach(user => {
+      item['admin'].forEach(user => {
         mixin.methods.request({
           url: 'user/'+ user +'/',
           method: 'GET',
         }).then(res => {
           console.log(res)
-          room.participateProfiles.push(res.data)
+          adminProfiles.push(res.data)
         }).catch(err => {
           context.state.localLoading = false // deactive loading mode
           if (err.response) {
@@ -260,13 +261,14 @@ Vue.use(Vuex);
           }
         })
       });
-      room.admin.forEach(user => {
+
+      item['participate'].forEach(user => {
         mixin.methods.request({
           url: 'user/'+ user +'/',
           method: 'GET',
         }).then(res => {
           console.log(res)
-          room.adminProfiles.push(res.data)
+          participateProfiles.push(res.data)
         }).catch(err => {
           context.state.localLoading = false // deactive loading mode
           if (err.response) {
@@ -277,6 +279,14 @@ Vue.use(Vuex);
           }
         })
       });
+
+      this.state.specificRoom.push(
+          {
+            admins : adminProfiles ,
+            participants : participateProfiles
+
+          }
+      )
     },
 
     addAdmins(context, {room, admins}) {
@@ -307,7 +317,7 @@ Vue.use(Vuex);
     rooms: state => {
       let rooms = state.rooms
       let processedRooms = rooms.admin
-      rooms.participated.forEach(participated => {
+      rooms['participated'].forEach(participated => {
         if (!processedRooms.some(room => room.id == participated.id)) {
           processedRooms.push(participated)
         }
