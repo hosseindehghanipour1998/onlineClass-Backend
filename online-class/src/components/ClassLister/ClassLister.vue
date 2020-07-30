@@ -1,9 +1,21 @@
 <template>
     <div class="father">
+        <div  class="buttonChild " v-if="this.showUserData" >
+            <button class="glow-on-hover" v-on:click="backButtonClick" >Back</button>
+
+        </div>
+        <hr/>
         <div v-if="!this.showUserData" class="mother">
             <div v-on:click="roomOnclick(item)" class="child" style="grow" v-for="item in items" v-bind:key="item.classCounter">
                     <ClassListView :classDetails="item" ></ClassListView>
             </div>
+        </div>
+
+
+        <div v-if="this.showUserData" class="mother">
+            <!-- <div v-on:click="roomOnclick(item)" class="child" style="grow" v-for="item in items" v-bind:key="item.classCounter"> -->
+                    <UserListerLayout ></UserListerLayout>
+            <!-- </div> -->
         </div>
 
     </div>
@@ -11,15 +23,19 @@
 
 <script>
 import ClassListView from './ClassListView.vue';
+import UserListerLayout from '../UserListerLayout/UserListerLayout.vue';
 export default {
     components:{
-        ClassListView
+        ClassListView,
+        UserListerLayout
     },
     props : {
     },
 
     methods:{
-
+        backButtonClick(){
+            this.showUserData = false;
+        },
         roomOnclick(item){
             //console.log("Clicked on the Room => item")
             //console.log(item.classData)
@@ -83,12 +99,23 @@ export default {
 </script>
 
 <style scoped>
+@import '../../CSSFiles/glowButtonStyle.css';
+.buttonChild{
+    display: flex;
+    justify-content: flex-start;
+    align-self: flex-start;
+    height: 5%;
+    padding:3px;;
+    margin:4px;
+
+
+}
 .mother{
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height:100%;
+    height:99%;
 }
 
 .father {

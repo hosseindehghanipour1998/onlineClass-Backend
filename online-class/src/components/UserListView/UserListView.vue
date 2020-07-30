@@ -5,9 +5,9 @@
         </div>
 
         <div id="infoChild">
-            <h1 class="inputStyle"> John Doe </h1>
-            <h1 class="inputStyle">Email Address :  Hossein@gmail.com </h1>
-            <h1 class="inputStyle"> id : 22345 </h1>
+            <h1 class="inputStyle"></h1>
+            <h1 class="inputStyle"></h1>
+            <h1 class="inputStyle"> id : </h1>
         </div>
 
         <div class="iconHolder">
@@ -28,12 +28,13 @@ export default {
 <style scoped>
 .inputStyle {
     color: blanchedalmond !important;
-    border-radius: 12px;
+    border-radius: 8px;
 	background-color: #01142F ;
     background-color: #01142F!important;
 	transition-duration: 0.4s;
     border: 2px solid #008CBA;
     width: 100%;
+    padding:4px;
     font-size: 1rem;
 }
 
