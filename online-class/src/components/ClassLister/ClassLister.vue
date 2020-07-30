@@ -13,9 +13,7 @@
 
 
         <div v-if="this.showUserData" class="mother">
-            <!-- <div v-on:click="roomOnclick(item)" class="child" style="grow" v-for="item in items" v-bind:key="item.classCounter"> -->
-                    <UserListerLayout ></UserListerLayout>
-            <!-- </div> -->
+            <UserListerLayout ></UserListerLayout>
         </div>
 
     </div>
@@ -36,13 +34,19 @@ export default {
         backButtonClick(){
             this.showUserData = false;
         },
+
+        fetchData(item){
+            this.$store.dispatch('getRoomUsers',item.classData)
+        },
+        changeState(){
+            this.showUserData = true
+        },
         roomOnclick(item){
             //console.log("Clicked on the Room => item")
-            //console.log(item.classData)
-            this.$store.dispatch('getRoomUsers',item.classData)
-            console.log("Room information : ")
-            console.log(this.$store.state.specificRoom)
-            this.showUserData = true;
+            //console.log(item.classData
+            //var p = new Promise((this.fetchData(item), this.changeState()) )
+            this.fetchData(item)
+            this.changeState()
         }
     },
 

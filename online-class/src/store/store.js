@@ -17,7 +17,9 @@ Vue.use(Vuex);
 
       rooms : [],
 
-      specificRoom : [],
+      specificRoomAdmins : [],
+      specificRoomUsers : [],
+      specificRoomMembers : [],
       classStatus :false ,
       successfulRoomJoining : false ,
   },
@@ -240,17 +242,17 @@ Vue.use(Vuex);
     },
 
     getRoomUsers(context, item) {
-      let adminProfiles = []
-      let participateProfiles = []
-      this.state.specificRoom = []
-
+      this.state.specificRoomAdmins = []
+      this.state.specificRoomUsers = []
+      this.state.specificRoomMembers = []
       item['admin'].forEach(user => {
         mixin.methods.request({
           url: 'user/'+ user +'/',
           method: 'GET',
         }).then(res => {
-          console.log(res)
-          adminProfiles.push(res.data)
+          //console.log(res)
+          //this.state.specificRoomAdmins.push(res.data)
+          this.state.specificRoomMembers.push({role:"Admin",data:res.data})
         }).catch(err => {
           context.state.localLoading = false // deactive loading mode
           if (err.response) {
@@ -268,7 +270,8 @@ Vue.use(Vuex);
           method: 'GET',
         }).then(res => {
           console.log(res)
-          participateProfiles.push(res.data)
+          //this.state.specificRoomUsers.push(res.data)
+          this.state.specificRoomMembers.push({role:"Participant",data:res.data})
         }).catch(err => {
           context.state.localLoading = false // deactive loading mode
           if (err.response) {
@@ -280,13 +283,6 @@ Vue.use(Vuex);
         })
       });
 
-      this.state.specificRoom.push(
-          {
-            admins : adminProfiles ,
-            participants : participateProfiles
-
-          }
-      )
     },
 
     addAdmins(context, {room, admins}) {
