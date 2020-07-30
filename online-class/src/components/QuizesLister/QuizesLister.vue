@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import EachQuizLayout from '../EachQuizLayout/EachQuizLayout.vue';
+import EachQuizLayout from './EachQuizLayout.vue';
 
 export default {
     components:{
