@@ -1,8 +1,8 @@
 <template>
     <div class="father">
         <div class="mother">
-            <div class="child" style="grow" v-for="item in items" v-bind:key="item">
-                    <QuizQuestion></QuizQuestion>
+            <div @clik="log(item)" class="child" style="grow" v-for="item in this.$store.state.examQuestions" v-bind:key="item">
+                    <QuizQuestion ></QuizQuestion>
             </div>
         </div>
 
@@ -21,8 +21,12 @@ export default {
 
     data(){
         return{
-            items : [1,2,3,4,5,6,7],
 
+        }
+    },
+    methods: {
+        log(intem){
+            console.log(intem)
         }
     }
 }

@@ -1,11 +1,17 @@
 <template>
     <div class="father">
-        <div class="mother">
-            <div  class="belowMother" v-for="(item,index1) in this.$store.state.roomsForExams" v-bind:key="index1">
-                    <div class="child"   v-for="(exam,index2) in item['exams']" v-bind:key="index2" v-show="item['exams'].length != 0"  style="width:100%;height:100%;">
-                        <EachQuizLayout :examData="exam" :roomData="item['room']" ></EachQuizLayout>
-                    </div>
+        <div  class="buttonChild " v-if="this.showUserData" >
+            <button class="glow-on-hover" v-on:click="backButtonClick" >Back</button>
+        </div>
+
+        <div v-if="!this.showUserData"  class="mother">
+            <div @click="examOnclick(item)" class="child" v-for="(item,index1) in this.$store.state.roomsForExams" v-bind:key="index1">
+                <EachQuizLayout    :examData="item['exam']" :roomData="item['room']" ></EachQuizLayout>
             </div>
+        </div>
+
+        <div v-if="this.showUserData" class="mother">
+            <QuizQuestionsLister ></QuizQuestionsLister>
         </div>
 
     </div>
@@ -13,44 +19,65 @@
 
 <script>
 import EachQuizLayout from './EachQuizLayout.vue';
+import QuizQuestionsLister from '../QuizQuestionsLister/QuizQuestionsLister.vue';
+
 
 export default {
     components:{
         EachQuizLayout,
+        QuizQuestionsLister
 
     },
     props : {
-        allUsers : [
-                {Name : "Hossein Dehghanipour" , Email:"XXX@gmail.com" , id:"123"},
-                {Name : "Mohammad Dehghanipour" , Email:"YYY@gmail.com" , id:"456"},
-                {Name : "Reza Dehghanipour" , Email:"ZZZZ@gmail.com" , id:"789"},
-                {Name : "gholam Dehghanipour" , Email:"BBB@gmail.com" , id:"5657"}
-            ]
+
     },
 
     methods :{
-        log(item){
-            console.log("Child Clicked on")
-            console.log(item)
+        fetchData(){
+            this.$store.dispatch('getExamQuestions')
+        },
+        changeState(state){
+            this.showUserData = state;
+        },
+        examOnclick(item1){
+            console.log("Child Clicked on");
+            console.log(item1);
+            //this.fetchData(item['exam'].id);
+            this.changeState(true);
+        },
+        backButtonClick(){
+            this.changeState(false) ;
         }
+
     },
 
     data(){
         return{
-            items : [1,2,3,4,5,6,7],
+            showUserData:false ,
 
         }
     },
     mounted(){
         this.$store.dispatch('getRoomsExams')
-        console.log("All")
-        console.log(this.$store.state.rooms)
+        // console.log("All")
+        // console.log(this.$store.state.rooms)
 
     }
 }
 </script>
 
 <style scoped>
+@import '../../CSSFiles/glowButtonStyle.css';
+.buttonChild{
+    display: flex;
+    justify-content: flex-start;
+    align-self: flex-start;
+    height: 5%;
+    padding:3px;;
+    margin:4px;
+
+
+}
 .belowMother{
     width: 60%;
     height: auto;
@@ -78,7 +105,7 @@ export default {
     margin-bottom: 5px;
     margin-top: 5px;
     padding: 2px;
-    width: 100%;
+    width: 60%;
     height: auto;
     border:2px solid white;
     border-radius: 5px;

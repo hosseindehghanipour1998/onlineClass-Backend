@@ -10,6 +10,14 @@
 </div>
 </template>
 
+<script>
+export default {
+  props :{
+
+  }
+}
+</script>
+
 <style scoped>
 textarea{
   max-width:100%;

@@ -278,7 +278,7 @@ Vue.use(Vuex);
           console.log(res.data)
           //room['exams'] = res.data
           res.data.forEach(exam => {
-            let sampleRoomExam = {'room':room , 'exam' : res.data}
+            let sampleRoomExam = {'room':room , 'exam' : exam}
             this.state.roomsForExams.push(sampleRoomExam)
           })
           //let sampleRoomExam = {'room':room , 'exams' : res.data}
