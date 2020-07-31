@@ -21,6 +21,7 @@ Vue.use(Vuex);
       successfulRoomJoining : false ,
       fetchedRoom : null,
       roomsForExams : [] ,
+      submittedExams : []
   },
 
   //Mutations
@@ -232,8 +233,8 @@ Vue.use(Vuex);
         url: 'room/'+ room_id +'/',
         method: 'GET',
       }).then(res => {
-        console.log("Fetched Class")
-        console.log(res)
+        //console.log("Fetched Class")
+        //console.log(res)
           payload.room = res.data
           mixin.methods.request({
             url: 'exam/create/',
@@ -269,13 +270,13 @@ Vue.use(Vuex);
     getRoomsExams(context) {
       this.state.roomsForExams = []
       context.state.rooms.admin.forEach(room => {
-        console.log(room)
+        //console.log(room)
         mixin.methods.request({
           url: 'exams/'+ room.id +'/',
           method: 'GET',
         }).then(res => {
-          console.log("All Exams of a room")
-          console.log(res.data)
+          //console.log("All Exams of a room")
+          //console.log(res.data)
           //room['exams'] = res.data
           res.data.forEach(exam => {
             let sampleRoomExam = {'room':room , 'exam' : exam}
@@ -298,7 +299,7 @@ Vue.use(Vuex);
           url: 'exams/'+ room.id +'/',
           method: 'GET',
         }).then(res => {
-          console.log(res)
+          //console.log(res)
           //room['exams'] = res.data
           let sampleRoomExam = {'room':room , 'exams' : res.data}
           this.state.roomsForExams.push(sampleRoomExam)
@@ -381,7 +382,7 @@ Vue.use(Vuex);
         url: 'questions/'+ exam_id +'/',
         method: 'GET',
       }).then(res => {
-        console.log(res)
+        //console.log(res)
         this.state.examQuestions = res.data
       }).catch(err => {
         context.state.localLoading = false
@@ -391,6 +392,21 @@ Vue.use(Vuex);
         }
       })
     },
+    getSubmittedExams(context){
+      mixin.methods.request({
+        url: 'answer/retrieve/',
+        method: 'GET',
+      }).then(res => {
+        //console.log(res)
+        this.state.submittedExams = res.data
+      }).catch(err => {
+        context.state.localLoading = false
+        if (err.response) {
+          console.log(err.response)
+
+        }
+      })
+    }
 
   },//end of actions
 

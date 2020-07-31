@@ -33,19 +33,20 @@ export default {
     },
     methods: {
         log(item){
-            console.log(item)
+            //console.log(item)
         },
         submitExam(){
-            console.log("Submitted")
+            //console.log("Submitted")
+            alert("Exam Submitted")
             this.submitted = true
         }
     },
     mounted(){
-        console.log("Whole Questions")
-        this.$store.state.examQuestions.forEach(item => {
+        // console.log("Whole Questions")
+        // this.$store.state.examQuestions.forEach(item => {
 
-            console.log( item.fields)
-        })
+        //     console.log( item.fields)
+        // })
 
     }
 }

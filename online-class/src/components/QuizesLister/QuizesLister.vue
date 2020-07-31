@@ -6,7 +6,7 @@
 
         <div v-if="!this.showUserData"  class="mother">
             <div @click="examOnclick(item)" class="child" v-for="(item,index1) in this.$store.state.roomsForExams" v-bind:key="index1">
-                <EachQuizLayout    :examData="item['exam']" :roomData="item['room']" ></EachQuizLayout>
+                <EachQuizLayout   :examData="item['exam']" :roomData="item['room']" ></EachQuizLayout>
             </div>
         </div>
 
@@ -40,10 +40,18 @@ export default {
             this.showUserData = state;
         },
         examOnclick(item){
-            console.log("Child Clicked on");
-            console.log(item);
-            this.fetchData(item['exam'].id);
-            this.changeState(true);
+            let canPaticipate = true ;
+            this.$store.state.submittedExams.forEach(sub => {
+                if ( item['exam'].id == sub.fields.exam_id) {
+                    alert("Can not participate in Quiz")
+                    canPaticipate = false;
+                }
+            })
+            if(canPaticipate){
+                this.fetchData(item['exam'].id);
+                this.changeState(true);
+            }
+
         },
         backButtonClick(){
             this.changeState(false) ;
@@ -53,12 +61,14 @@ export default {
 
     data(){
         return{
+            isActive : true ,
             showUserData:false ,
 
         }
     },
     mounted(){
         this.$store.dispatch('getRoomsExams')
+        this.$store.dispatch('getSubmittedExams')
         // console.log("All")
         // console.log(this.$store.state.rooms)
 
