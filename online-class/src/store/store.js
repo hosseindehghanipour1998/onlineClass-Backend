@@ -14,7 +14,7 @@ Vue.use(Vuex);
           isLoggedIn : false,
           email : null ,
       },
-
+      examQuestions : [],
       rooms : [],
       specificRoomMembers : [],
       classStatus :false ,
@@ -277,8 +277,12 @@ Vue.use(Vuex);
           console.log("All Exams of a room")
           console.log(res.data)
           //room['exams'] = res.data
-          let sampleRoomExam = {'room':room , 'exams' : res.data}
-          this.state.roomsForExams.push(sampleRoomExam)
+          res.data.forEach(exam => {
+            let sampleRoomExam = {'room':room , 'exam' : res.data}
+            this.state.roomsForExams.push(sampleRoomExam)
+          })
+          //let sampleRoomExam = {'room':room , 'exams' : res.data}
+          //this.state.roomsForExams.push(sampleRoomExam)
         }).catch(err => {
           context.state.localLoading = false // deactive loading mode
           if (err.response) {
@@ -369,6 +373,23 @@ Vue.use(Vuex);
           context.state.localLoading = false
           alert("User Promotion Denied !")
         })
+    },
+
+    getExamQuestions(context,exam_id){
+
+      mixin.methods.request({
+        url: 'questions/'+ exam_id +'/',
+        method: 'GET',
+      }).then(res => {
+        console.log(res)
+        this.state.examQuestions = res
+      }).catch(err => {
+        context.state.localLoading = false
+        if (err.response) {
+          console.log(err.response)
+
+        }
+      })
     },
 
   },//end of actions

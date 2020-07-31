@@ -2,7 +2,7 @@
     <div class="father">
         <div class="mother">
             <div  class="belowMother" v-for="(item,index1) in this.$store.state.roomsForExams" v-bind:key="index1">
-                    <div class="child" @click="log()"  v-for="(exam,index2) in item['exams']" v-bind:key="index2" v-show="item['exams'].length != 0"  style="width:100%;height:100%;">
+                    <div class="child"   v-for="(exam,index2) in item['exams']" v-bind:key="index2" v-show="item['exams'].length != 0"  style="width:100%;height:100%;">
                         <EachQuizLayout :examData="exam" :roomData="item['room']" ></EachQuizLayout>
                     </div>
             </div>
@@ -29,8 +29,9 @@ export default {
     },
 
     methods :{
-        log(){
+        log(item){
             console.log("Child Clicked on")
+            console.log(item)
         }
     },
 
