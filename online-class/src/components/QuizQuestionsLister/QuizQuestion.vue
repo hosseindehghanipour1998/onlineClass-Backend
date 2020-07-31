@@ -3,9 +3,11 @@
 
 <div class="SignInAlignment">
   <form>
-        <h3 >#Q :  </h3>
-        <h4 class="inputStyle" placeholder="Question"></h4>
-        <textarea class="inputStyle pa2 " name="message" rows="6" style="width:100%;" placeholder="Your Answer Here"></textarea>
+        <h3 >#Q : {{questionData.number}} </h3>
+        <h4 class="inputStyle" placeholder="Question">{{questionData.text}}</h4>
+        <textarea class="inputStyle pa2 " name="message" rows="3" style="width:100%;" :disabled="!editable" placeholder="Your Answer Here"></textarea>
+        <textarea class="solutionStyle pa2 " name="message" rows="3" style="width:100%;" disabled v-show="!editable" placeholder="Teacher's Solution" :value="questionData.solution"></textarea>
+        <h4>Credit  : {{questionData.credit}}</h4>
   </form>
 </div>
 </template>
@@ -13,12 +15,37 @@
 <script>
 export default {
   props :{
+      questionData :{
+        type: Object,
+        required:true
+      },
+      editable:{
+        type: Boolean
+      }
+  },
+  data(){
+    return{
+      questionUserSolution : "",
+    }
+  },
 
-  }
 }
 </script>
 
 <style scoped>
+.solutionStyle{
+    color: cyan !important;
+    border-radius: 12px;
+background-color: #000000;
+background-image: linear-gradient(315deg, #000000 0%, #5e5368 74%);
+
+	  transition-duration: 0.4s;
+    border: 2px solid #008CBA;
+    width: 100%;
+    font-size: 1.5rem;
+    padding:8px;
+    margin:2px;
+}
 textarea{
   max-width:100%;
   min-width:100%;

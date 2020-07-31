@@ -33,16 +33,16 @@ export default {
     },
 
     methods :{
-        fetchData(){
-            this.$store.dispatch('getExamQuestions')
+        fetchData(payload){
+            this.$store.dispatch('getExamQuestions',payload)
         },
         changeState(state){
             this.showUserData = state;
         },
-        examOnclick(item1){
+        examOnclick(item){
             console.log("Child Clicked on");
-            console.log(item1);
-            //this.fetchData(item['exam'].id);
+            console.log(item);
+            this.fetchData(item['exam'].id);
             this.changeState(true);
         },
         backButtonClick(){

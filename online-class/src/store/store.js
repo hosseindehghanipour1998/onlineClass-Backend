@@ -382,7 +382,7 @@ Vue.use(Vuex);
         method: 'GET',
       }).then(res => {
         console.log(res)
-        this.state.examQuestions = res
+        this.state.examQuestions = res.data
       }).catch(err => {
         context.state.localLoading = false
         if (err.response) {

@@ -1,9 +1,15 @@
 <template>
     <div class="father">
+
         <div class="mother">
-            <div @clik="log(item)" class="child" style="grow" v-for="item in this.$store.state.examQuestions" v-bind:key="item">
-                    <QuizQuestion ></QuizQuestion>
+            <div class="child2">
+                <button class="glow-on-hover" v-on:click="submitExam()"  > Submit  Answers </button>
             </div>
+            <div @click="log(item)" class="child" style="grow" v-for="(item,index) in this.$store.state.examQuestions" v-bind:key="index">
+                    <QuizQuestion :questionData="item.fields" :editable="!submitted"></QuizQuestion>
+            </div>
+
+
         </div>
 
     </div>
@@ -21,18 +27,36 @@ export default {
 
     data(){
         return{
+            submitted : false ,
 
         }
     },
     methods: {
-        log(intem){
-            console.log(intem)
+        log(item){
+            console.log(item)
+        },
+        submitExam(){
+            console.log("Submitted")
+            this.submitted = true
         }
+    },
+    mounted(){
+        console.log("Whole Questions")
+        this.$store.state.examQuestions.forEach(item => {
+
+            console.log( item.fields)
+        })
+
     }
 }
 </script>
 
 <style scoped>
+
+.child2{
+    height:30% !important;
+    width:100%
+}
 .mother{
     display: flex;
     flex-direction: column;
@@ -65,5 +89,68 @@ export default {
 
 .child:hover{
     background-color: gold;
+}
+
+
+/*  Glow Style Overriden */
+.glow-on-hover {
+    width: 30%;
+    height:40px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: powderblue !important;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 5px;
+    opacity: 1;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
 }
 </style>
