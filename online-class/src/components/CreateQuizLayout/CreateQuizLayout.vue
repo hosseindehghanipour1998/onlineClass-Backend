@@ -101,7 +101,7 @@ export default {
                 console.log(payload)
                 //this.$store.dispatch('fetchCreate', payload)
                 this.$store.dispatch('createExam', payload)
-                this.resetExam();
+                //this.resetExam();
             }
 
         },

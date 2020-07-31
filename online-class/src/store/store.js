@@ -274,6 +274,7 @@ Vue.use(Vuex);
           url: 'exams/'+ room.id +'/',
           method: 'GET',
         }).then(res => {
+          console.log("All Exams of a room")
           console.log(res.data)
           //room['exams'] = res.data
           let sampleRoomExam = {'room':room , 'exams' : res.data}
