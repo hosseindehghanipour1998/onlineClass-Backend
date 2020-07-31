@@ -34,7 +34,7 @@
         </div>
         <div class="row">
             <button class="glow-on-hover column " v-on:click="submitExam()" style="width:60%;margin:2px;" > Create </button>
-            <button class="glow-on-hover column"  v-on:click="draftExam()" style="width:60%;margin:2px;" disabled> Draft </button>
+            <button class="glow-on-hover column"  v-on:click="draftExam()" style="width:60%;margin:2px;" > Draft </button>
             <button class="glow-on-hover column"  v-on:click="resetExam()" style="width:60%;margin:2px;" > Reset </button>
         </div>
 
@@ -68,7 +68,6 @@ export default {
     },
     methods: {
         add() {
-            //this.retriveIfPossible()
             console.log(this.globalQuestionCounter);
             this.globalQuestionCounter ++ ;
             this.inputs.push({
@@ -79,8 +78,7 @@ export default {
 
         },
         remove(index) {
-            //this.retriveIfPossible()
-            if ( index > 1 || this.inputs.length > 1 ){
+            if ( index > 1 || this.globalQuestionCounter > 1 ){
                 console.log(`Delete at index : ${index-1}`)
                 this.inputs.splice(index-1, 1);
                 this.globalQuestionCounter--;
@@ -99,7 +97,6 @@ export default {
         draftExam() {
             let payload = this.exam
             payload.questions = this.inputs
-            console.log(payload)
             localStorage.setItem("draftExam",JSON.stringify(payload))
 
             console.log("Saved Global Question Counter")
@@ -135,11 +132,16 @@ export default {
                 this.exam.classRoomID = payload.classRoomID;
                 this.inputs = payload.questions;
                 let number  = parseInt(localStorage.getItem("GlobalCounter"))
+                this.globalQuestionCounter = number
                 console.log("Retrieved Global Question Counter")
                 console.log(number)
         }
         }
     },// end of methods
+
+    mounted(){
+        this.retriveIfPossible();
+    }
 }
 </script>
 
