@@ -20,6 +20,7 @@ Vue.use(Vuex);
       classStatus :false ,
       successfulRoomJoining : false ,
       fetchedRoom : null,
+      roomsForExams : [] ,
   },
 
   //Mutations
@@ -266,13 +267,17 @@ Vue.use(Vuex);
 
 
     getRoomsExams(context) {
+      this.state.roomsForExams = []
       context.state.rooms.admin.forEach(room => {
+        console.log(room)
         mixin.methods.request({
           url: 'exams/'+ room.id +'/',
           method: 'GET',
         }).then(res => {
-          console.log(res)
-          room['exams'] = res.data
+          console.log(res.data)
+          //room['exams'] = res.data
+          let sampleRoomExam = {'room':room , 'exams' : res.data}
+          this.state.roomsForExams.push(sampleRoomExam)
         }).catch(err => {
           context.state.localLoading = false // deactive loading mode
           if (err.response) {
@@ -289,7 +294,9 @@ Vue.use(Vuex);
           method: 'GET',
         }).then(res => {
           console.log(res)
-          room['exams'] = res.data
+          //room['exams'] = res.data
+          let sampleRoomExam = {'room':room , 'exams' : res.data}
+          this.state.roomsForExams.push(sampleRoomExam)
         }).catch(err => {
           context.state.localLoading = false // deactive loading mode
           if (err.response) {

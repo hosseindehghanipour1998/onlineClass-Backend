@@ -1,9 +1,10 @@
 <template>
     <div class="father">
         <div class="mother">
-            <div class="child" style="grow" v-for="item in items" v-bind:key="item">
-                    <EachQuizLayout></EachQuizLayout>
-
+            <div  class="belowMother" v-for="(item,index1) in this.$store.state.roomsForExams" v-bind:key="index1">
+                    <div class="child" @click="log()"  v-for="(exam,index2) in item['exams']" v-bind:key="index2" v-show="item['exams'].length != 0"  style="width:100%;height:100%;">
+                        <EachQuizLayout :examData="exam" :roomData="item['room']" ></EachQuizLayout>
+                    </div>
             </div>
         </div>
 
@@ -27,16 +28,32 @@ export default {
             ]
     },
 
+    methods :{
+        log(){
+            console.log("Child Clicked on")
+        }
+    },
+
     data(){
         return{
             items : [1,2,3,4,5,6,7],
 
         }
+    },
+    mounted(){
+        this.$store.dispatch('getRoomsExams')
+        console.log("All")
+        console.log(this.$store.state.rooms)
+
     }
 }
 </script>
 
 <style scoped>
+.belowMother{
+    width: 60%;
+    height: auto;
+}
 .mother{
     display: flex;
     flex-direction: column;
@@ -60,11 +77,12 @@ export default {
     margin-bottom: 5px;
     margin-top: 5px;
     padding: 2px;
-    width: 60%;
+    width: 100%;
     height: auto;
     border:2px solid white;
     border-radius: 5px;
     background-color:gray ;
+    cursor: pointer;
 }
 
 .child:hover{
