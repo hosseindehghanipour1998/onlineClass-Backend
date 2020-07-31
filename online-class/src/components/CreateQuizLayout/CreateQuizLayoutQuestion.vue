@@ -3,9 +3,9 @@
 
 <div class="SignInAlignment">
   <form>
-        <h3 >#Q : {{(passedQuestion.questionNo).toString()}} </h3>
+        <h3 >#Q : {{(passedQuestion.number).toString()}} </h3>
         <input type="text" v-model="passedQuestion.text" class="inputStyle"  placeholder="Question">
-        <textarea class="inputStyle pa2 " v-model="passedQuestion.answerText"  name="message" rows="6" style="width:100%;" placeholder="Your Answer Here"></textarea>
+        <textarea class="inputStyle pa2 " v-model="passedQuestion.solution"  name="message" rows="6" style="width:100%;" placeholder="Your Answer Here"></textarea>
   </form>
 </div>
 </template>

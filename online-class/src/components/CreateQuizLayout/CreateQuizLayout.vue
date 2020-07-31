@@ -1,8 +1,8 @@
 <template>
     <div class="father">
         <div class="LittleBrother">
-            <input class="inputStyle" style="width:60%; min-height:3%;" v-model="exam.title" placeholder="Quiz Name" />
-            <input class="inputStyle" type="number" style="width:60%; min-height:3%;" v-model="exam.room" placeholder="Class ID" />
+            <input class="inputStyle" style="width:60%; min-height:3%;" v-model="exam.title" placeholder="Quiz Name" required/>
+            <input class="inputStyle" type="number" style="width:60%; min-height:3%;" v-model="exam.room" placeholder="Class ID" required/>
 <!--
             <div class="row">
 
@@ -20,14 +20,14 @@
         </div>
         <hr class="vl"/>
 
-        <div class="mother" v-for="question in this.inputs" :key="question.questionNo">
+        <div class="mother" v-for="question in this.inputs" :key="question.number">
             <div class="oldBrother">
                 <span class="leftSpan">
                     <CreateQuizLayoutQuestion  :passedQuestion="question"> </CreateQuizLayoutQuestion>
                 </span>
                 <span class="rightSpan">
-                    <button class="buttonStyle" @click="remove(question.questionNo)" v-show="question.questionNo || ( !question.questionNo && inputs.length > 1)">Remove  </button>
-                    <button class="buttonStyle" @click="add()" v-show="question.questionNo-1 == inputs.length-1"> Add</button>
+                    <button class="buttonStyle" @click="remove(question.number)" v-show="question.number || ( !question.number && inputs.length > 1)">Remove  </button>
+                    <button class="buttonStyle" @click="add()" v-show="question.number-1 == inputs.length-1"> Add</button>
                 </span>
             </div>
 
@@ -51,16 +51,17 @@ export default {
         return{
             exam :{
                 title : '',
-                room : 0 ,
+                room : "" ,
                 questions : []
 
             },
             globalQuestionCounter : 1 ,
             inputs: [
                 {
-                    questionNo : 1,
+                    number : 1,
                     text : "",
-                    answerText : "",
+                    solution : "",
+                    credit : 1
                 }
             ],
         }
@@ -71,9 +72,10 @@ export default {
             console.log(this.globalQuestionCounter);
             this.globalQuestionCounter ++ ;
             this.inputs.push({
-                    questionNo :  this.globalQuestionCounter,
+                    number :  this.globalQuestionCounter,
                     text : "",
-                    answerText : "",
+                    solution : "",
+                    credit:1
                 });
 
         },
@@ -83,15 +85,24 @@ export default {
                 this.inputs.splice(index-1, 1);
                 this.globalQuestionCounter--;
                 for ( let i = 0 ; i < this.inputs.length; i++){
-                    this.inputs[i].questionNo = i+1;
+                    this.inputs[i].number = i+1;
                 }
             }
         },
         submitExam() {
-            let payload = this.exam
-            payload.questions = this.inputs
-            console.log(payload)
-            this.$store.dispatch('createExam', payload)
+            if ( this.exam.room == "" || this.exam.title== "" ) {
+                alert("Fill Exam Title and Class ID")
+            }
+            else {
+                //this.$store.dispatch('getRoom',this.exam.room)
+                let payload = this.exam
+                payload.room = parseInt(payload.room)
+                payload.questions = this.inputs
+                console.log(payload)
+                //this.$store.dispatch('fetchCreate', payload)
+                this.$store.dispatch('createExam', payload)
+                this.resetExam();
+            }
 
         },
         draftExam() {
@@ -115,12 +126,13 @@ export default {
             this.globalQuestionCounter = 1 ;
 
             this.exam.title = ''
-            this.exam.classRoomID = ''
+            this.exam.room = ''
             this.inputs = [
                 {
-                    questionNo : 1,
+                    number : 1,
                     text : "",
-                    answerText : "",
+                    solution : "",
+                    credit:1
                 }
             ]
         },
@@ -129,7 +141,7 @@ export default {
             if (anyDrafts == "1"){
                 let payload =JSON.parse(localStorage.getItem("draftExam"))
                 this.exam.title = payload.title;
-                this.exam.classRoomID = payload.classRoomID;
+                this.exam.room = payload.room;
                 this.inputs = payload.questions;
                 let number  = parseInt(localStorage.getItem("GlobalCounter"))
                 this.globalQuestionCounter = number

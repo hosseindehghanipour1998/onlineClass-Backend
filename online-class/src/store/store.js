@@ -19,6 +19,7 @@ Vue.use(Vuex);
       specificRoomMembers : [],
       classStatus :false ,
       successfulRoomJoining : false ,
+      fetchedRoom : null,
   },
 
   //Mutations
@@ -197,7 +198,6 @@ Vue.use(Vuex);
 
 					if (err.response.status == 400) {
             alert("Unable To Create The Exam")
-						console.log({ message: 'اطلاعات ورودی معتبر نیست' })
 					}
 				}
 			})
@@ -220,6 +220,56 @@ Vue.use(Vuex);
         }
       })
     },
+
+    getRoom(context, room_id) {
+
+    },
+    ///Test Ground
+    fetchCreate(context, payload) {
+      let room_id = payload.room
+      mixin.methods.request({
+        url: 'room/'+ room_id +'/',
+        method: 'GET',
+      }).then(res => {
+        console.log("Fetched Class")
+        console.log(res)
+          payload.room = res.data
+          mixin.methods.request({
+            url: 'exam/create/',
+            method: 'POST',
+            data: payload
+          }).then(res => {
+            console.log(res)
+            //context.dispatch('getRoomExam', res.data.room)
+            alert("Exam Created SuccessFully")
+          }).catch(err => {
+            context.state.localLoading = false // deactive loading mode
+            if (err.response) {
+              console.log(err.response)
+
+              if (err.response.status == 400) {
+                alert("Unable To Create The Exam")
+              }
+            }
+          })
+      }).catch(err => {
+        context.state.localLoading = false // deactive loading mode
+        if (err.response) {
+          console.log(err.response)
+          if (err.response.status == 400) {
+            console.log({ message: 'اطلاعات ورودی معتبر نیست' })
+          }
+        }
+      })
+    },
+
+
+
+
+
+
+
+    /////////////
 
     getRoomsExams(context) {
       context.state.rooms.admin.forEach(room => {
