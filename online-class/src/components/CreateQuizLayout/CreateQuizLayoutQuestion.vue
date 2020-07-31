@@ -58,7 +58,7 @@ form{
 }
 
 .inputStyle {
-    color: white !important;
+    color: white;
     border-radius: 12px;
     background-color: #01142F;
 	  transition-duration: 0.4s;

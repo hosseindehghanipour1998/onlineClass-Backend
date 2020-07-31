@@ -63,6 +63,11 @@ Vue.use(Vuex);
             item.role = "Admin" ;
           }
         })
+      },
+      refereshDataSotrage(){
+        localStorage.removeItem("draftExam")
+        localStorage.removeItem("Draf")
+        localStorage.removeItem("GlobalCounter")
       }
   },
 
@@ -81,6 +86,7 @@ Vue.use(Vuex);
         console.log(`Login Token : ${res.data.token}` )
         // localStorage.setItem('statuscode',res.status)
         context.commit('setUserData', res.data) // create related cafe classes
+        context.commit('refereshDataSotrage') // create related cafe classes
         if(res.status == 200){
           console.log("Status : 200")
           this.$router.push( { name: 'Home' })

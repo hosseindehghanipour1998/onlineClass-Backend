@@ -2,7 +2,7 @@
     <div class="father">
         <div class="LittleBrother">
             <input class="inputStyle" style="width:60%; min-height:3%;" v-model="exam.title" placeholder="Quiz Name" />
-            <input class="inputStyle" type="number" style="width:60%; min-height:3%;" v-model="exam.classRoomID" placeholder="Class ID" />
+            <input class="inputStyle" type="number" style="width:60%; min-height:3%;" v-model="exam.room" placeholder="Class ID" />
 <!--
             <div class="row">
 
@@ -33,8 +33,8 @@
 
         </div>
         <div class="row">
-            <button class="glow-on-hover column " v-on:click="submitExam()" style="width:60%;margin:2px;" disabled> Create </button>
-            <button class="glow-on-hover column"  v-on:click="draftExam()" style="width:60%;margin:2px;" > Draft </button>
+            <button class="glow-on-hover column " v-on:click="submitExam()" style="width:60%;margin:2px;" > Create </button>
+            <button class="glow-on-hover column"  v-on:click="draftExam()" style="width:60%;margin:2px;" disabled> Draft </button>
             <button class="glow-on-hover column"  v-on:click="resetExam()" style="width:60%;margin:2px;" > Reset </button>
         </div>
 
@@ -51,7 +51,7 @@ export default {
         return{
             exam :{
                 title : '',
-                classRoomID : 0 ,
+                room : 0 ,
                 questions : []
 
             },
@@ -68,6 +68,7 @@ export default {
     },
     methods: {
         add() {
+            //this.retriveIfPossible()
             console.log(this.globalQuestionCounter);
             this.globalQuestionCounter ++ ;
             this.inputs.push({
@@ -78,6 +79,7 @@ export default {
 
         },
         remove(index) {
+            //this.retriveIfPossible()
             if ( index > 1 || this.inputs.length > 1 ){
                 console.log(`Delete at index : ${index-1}`)
                 this.inputs.splice(index-1, 1);
@@ -92,20 +94,29 @@ export default {
             payload.questions = this.inputs
             console.log(payload)
             this.$store.dispatch('createExam', payload)
-            //this.$bvModal.hide('create-exam-modal')
+
         },
         draftExam() {
             let payload = this.exam
             payload.questions = this.inputs
             console.log(payload)
             localStorage.setItem("draftExam",JSON.stringify(payload))
+
+            console.log("Saved Global Question Counter")
+            if ( this.globalQuestionCounter <= 0 ){
+                this.globalQuestionCounter = 1;
+            }
+            console.log(this.globalQuestionCounter)
+            localStorage.setItem("GlobalCounter",this.globalQuestionCounter)
             localStorage.setItem("Draf","1")
-            //this.$store.dispatch('createExam', payload)
-            //this.$bvModal.hide('create-exam-modal')
+
         },
         resetExam(){
             localStorage.removeItem("draftExam")
             localStorage.removeItem("Draf")
+            localStorage.removeItem("GlobalCounter")
+            this.globalQuestionCounter = 1 ;
+
             this.exam.title = ''
             this.exam.classRoomID = ''
             this.inputs = [
@@ -115,19 +126,20 @@ export default {
                     answerText : "",
                 }
             ]
+        },
+        retriveIfPossible(){
+            let anyDrafts = localStorage.getItem("Draf") ;
+            if (anyDrafts == "1"){
+                let payload =JSON.parse(localStorage.getItem("draftExam"))
+                this.exam.title = payload.title;
+                this.exam.classRoomID = payload.classRoomID;
+                this.inputs = payload.questions;
+                let number  = parseInt(localStorage.getItem("GlobalCounter"))
+                console.log("Retrieved Global Question Counter")
+                console.log(number)
+        }
         }
     },// end of methods
-
-    mounted(){
-        let anyDrafts = localStorage.getItem("Draf") ;
-        if (anyDrafts == "1"){
-            let payload =JSON.parse(localStorage.getItem("draftExam"))
-            this.exam.title = payload.title;
-            this.exam.classRoomID = payload.classRoomID;
-            this.inputs = payload.questions;
-        }
-
-    }
 }
 </script>
 
