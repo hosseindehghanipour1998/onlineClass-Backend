@@ -3,6 +3,7 @@
     <particles></particles>
     <div class = "grandPa" style="width:100% ; height:100%;">
       <router-view />
+
    </div>
 
   </div>
@@ -62,8 +63,12 @@ export default {
   mounted() {
     this.$store.dispatch('getUserRooms')
     if(!this.isLogedin){
-      this.$router.push('/login')
+      //this.$router.push('/login')
     }
+    else {
+      this.$router.push('/home')
+    }
+    this.$store.state.user.isLogedin = true;
 
   },
   ondestroy(){

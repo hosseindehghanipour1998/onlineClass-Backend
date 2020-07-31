@@ -3,7 +3,7 @@
 
 <div class="SignInAlignment">
   <form>
-        <h3 style="color:white"> Edit Profile </h3>
+        <h3 style="color:white"> Account General Info </h3>
         <div class="row">
           <input  class="inputStyle  pa2 inputStyle" type="text" :value="this.userData.first_name" placeholder="First Name " disabled >
           <input class="inputStyle  pa2 inputStyle" type="text"  :value="this.userData.last_name" placeholder="Last Name " disabled>
@@ -19,16 +19,16 @@
         <div class="row">
           <input id="column" class="inputStyle  pa2 inputStyle" type="text"  placeholder="Postal Code " disabled>
           <input id="column" class="inputStyle  pa2 inputStyle" type="text"  placeholder="Country" disabled>
-          <input id="column" class="inputStyle  pa2 inputStyle" type="text" :value="this.userData.username" placeholder="username" disabled>
+          <input id="column" class="inputStyle  pa2 inputStyle" type="text" :value="'UN:  ' + this.userData.username" placeholder="username" disabled>
         </div>
-        <div class="otherColumns">
+        <!-- <div class="otherColumns">
           <textarea class="inputStyle pa2 " name="message" rows="6" style="width:100%;" placeholder="Describe yourself here..."></textarea>
-        </div>
+        </div> -->
 
-        <div class="row">
+        <!-- <div class="row">
           <input class=" buttonStyle"  type="submit" value="save">
           <input class=" buttonStyle"  type="submit" value="reset">
-        </div>
+        </div> -->
   </form>
 </div>
 </template>
@@ -84,6 +84,7 @@ export default {
     font-size: 1.5rem;
     padding:8px;
     margin:3px;
+    cursor: pointer;
 }
 .row{
   display:flex;

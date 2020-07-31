@@ -88,6 +88,7 @@ Vue.use(Vuex);
         localStorage.setItem('token', res.data.token) // save token into localstorage
         console.log(`Login Token : ${res.data.token}` )
         // localStorage.setItem('statuscode',res.status)
+        this.state.user.isLoggedIn  = true;
         context.commit('setUserData', res.data) // create related cafe classes
         context.commit('refereshDataSotrage') // create related cafe classes
         if(res.status == 200){

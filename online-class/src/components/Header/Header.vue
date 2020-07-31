@@ -8,7 +8,6 @@
                     <button class="searchTextBox">Search</button>
                 </div>
             </li>
-            <li><router-link to="/" exact><p>Notifications</p></router-link></li>
             <div class="dropdown">
                 <li>
 

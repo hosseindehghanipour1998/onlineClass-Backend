@@ -45,12 +45,12 @@ export default {
     data(){
       return{
         form : {
-          first_name : "Mohammad",
-          last_name : "Siavashi",
-          password : "Hossein123",
-          confirm_password : "Hossein123" ,
-          username : "M_Siavashi" ,
-          email : "MSiavashi@gmail.com"
+          first_name : "",
+          last_name : "",
+          password : "",
+          confirm_password : "" ,
+          username : "" ,
+          email : "@gmail.com"
         }
       }
     },
