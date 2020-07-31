@@ -3,7 +3,7 @@
 
         <div class="mother">
             <div class="child2">
-                <button class="glow-on-hover" v-on:click="submitExam()"  > Submit  Answers </button>
+                <button class="glow-on-hover" v-on:click="submitExam(examId)"  > Submit  Answers </button>
             </div>
             <div @click="log(item)" class="child" style="grow" v-for="(item,index) in this.$store.state.examQuestions" v-bind:key="index">
                     <QuizQuestion :questionData="item.fields" :editable="!submitted"></QuizQuestion>
@@ -22,6 +22,9 @@ export default {
         QuizQuestion
     },
     props : {
+        examId:{
+            type: Number
+        }
 
     },
 
@@ -35,10 +38,14 @@ export default {
         log(item){
             //console.log(item)
         },
-        submitExam(){
+        submitExam(examID){
             //console.log("Submitted")
-            alert("Exam Submitted")
+            let userID = this.$store.state.user.id ;
+
+            let payload = {exam_id : examID , user_id : userID}
+            this.$store.dispatch('submitExam',payload)
             this.submitted = true
+
         }
     },
     mounted(){

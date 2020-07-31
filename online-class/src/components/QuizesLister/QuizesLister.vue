@@ -11,7 +11,7 @@
         </div>
 
         <div v-if="this.showUserData" class="mother">
-            <QuizQuestionsLister ></QuizQuestionsLister>
+            <QuizQuestionsLister :examId="this.clickedExamId"></QuizQuestionsLister>
         </div>
 
     </div>
@@ -43,6 +43,7 @@ export default {
             //console.log("item")
             //console.log(item)
             let canPaticipate = true ;
+            this.clickedExamId = item['exam'].id
             this.$store.state.submittedExams.forEach(sub => {
                 if ( (item['exam'].id == sub.fields.exam_id) && (this.$store.state.user.id==sub.fields.user_id)) {
                     alert("Can not participate in Quiz")
@@ -64,6 +65,7 @@ export default {
 
     data(){
         return{
+            clickedExamId :-1 ,
             // isActive : true ,
             showUserData:false ,
 

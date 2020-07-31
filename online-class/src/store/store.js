@@ -394,6 +394,7 @@ Vue.use(Vuex);
         }
       })
     },
+
     getSubmittedExams(context){
       mixin.methods.request({
         url: 'answer/retrieve/',
@@ -409,8 +410,26 @@ Vue.use(Vuex);
 
         }
       })
-    }
+    },
 
+    submitExam(context,payload){
+      mixin.methods.request({
+        url: 'answer/submit/' + payload.exam_id + '/' + payload.user_id ,
+        method: 'POST',
+      }).then(res => {
+        //console.log("Submit Info")
+        //console.log(res)
+        alert("Exam Submitted")
+        this.state.submittedExams = res.data
+      }).catch(err => {
+        context.state.localLoading = false
+        if (err.response) {
+          console.log(err.response)
+          //alert("Unable to submit exam")
+
+        }
+      })
+    },
   },//end of actions
 
 

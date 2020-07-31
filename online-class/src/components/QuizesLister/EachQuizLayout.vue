@@ -47,7 +47,7 @@ export default {
         determine(examId) {
             let status = false
             this.$store.state.submittedExams.forEach(sub => {
-                console.log(`testing : ${sub.fields.exam_id}=${examId} ${sub.fields.user_id}=${this.$store.state.user.id}`)
+                //console.log(`testing : ${sub.fields.exam_id}=${examId} ${sub.fields.user_id}=${this.$store.state.user.id}`)
 
                 if( (sub.fields.exam_id == examId) && ( sub.fields.user_id == this.$store.state.user.id ) ){
                     status =  true;
