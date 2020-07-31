@@ -2,7 +2,7 @@
     <div class="father">
         <div class="mother">
             <div class="child" style="grow" v-for="item in this.$store.state.specificRoomMembers" v-bind:key="item.counter">
-                    <UserListView :userInfo="item" :roomID="classID"></UserListView>
+                    <UserListView :userInfo="item" :roomID="classID"  :ImAdmin="iAmAdmin"  ></UserListView>
             </div>
         </div>
 
@@ -19,6 +19,9 @@ export default {
         classID :{
             type:Number,
             required:true
+        },
+        iAmAdmin : {
+            type:Boolean
         }
 
     },

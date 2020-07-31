@@ -7,6 +7,7 @@
             </div>
             <div @click="log(item)" class="child" style="grow" v-for="(item,index) in this.$store.state.examQuestions" v-bind:key="index">
                     <QuizQuestion :questionData="item.fields" :editable="!submitted"></QuizQuestion>
+                    <button @click="onAddClick()" class="glow-on-hover">+</button>
             </div>
 
 
@@ -45,8 +46,10 @@ export default {
             let payload = {exam_id : examID , user_id : userID}
             this.$store.dispatch('submitExam',payload)
             this.submitted = true
+            alert("Exam Submitted")
 
-        }
+        },
+
     },
     mounted(){
         // console.log("Whole Questions")

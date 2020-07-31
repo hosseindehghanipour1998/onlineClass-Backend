@@ -19,8 +19,8 @@
 
         <div class="iconHolder">
             <!-- <img src="./actions.png" class="icon"/> -->
-            <button class="glow-on-hover icon" v-on:click="promoteToAdmin(roomID , userInfo)"  >P</button>
-            <button class="glow-on-hover icon"  v-on:click="showConsole(userInfo)"   > - </button>
+            <button class="glow-on-hover icon" v-on:click="promoteToAdmin(roomID , userInfo,ImAdmin)"  >P</button>
+            <button class="glow-on-hover icon"  v-on:click="showConsole(ImAdmin)"   > - </button>
         </div>
     </div>
 </template>
@@ -35,6 +35,9 @@ export default {
         roomID : {
             type:Number,
             required : true,
+        },
+        ImAdmin : {
+            type:Boolean
         }
 
     },
@@ -44,16 +47,24 @@ export default {
         }
     },
     methods :{
-        promoteToAdmin(x,y){
-            console.log(y)
-            let userID =  y.data.id
-            let roomID = x
-            console.log(x)
-            this.$store.dispatch('addAdmin',{roomID , userID })
+        promoteToAdmin(x,y,z){
+            if ( z == true ){
+                console.log(y)
+                let userID =  y.data.id
+                let roomID = x
+                console.log(x)
+                this.$store.dispatch('addAdmin',{roomID , userID })
+            }
+            else {
+                alert("You can't promote anyone ... Not an admin")
+            }
+
         },
         showConsole(x){
-            console.log("Room ID")
-            console.log(x)
+            console.log(`Room ID ${x}` )
+
+
+
         }
     }
 }

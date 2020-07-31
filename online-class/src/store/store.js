@@ -180,6 +180,7 @@ Vue.use(Vuex);
         method: 'POST',
       }).then(res => {
         console.log(res)
+        alert("Joined Class Successfully")
 			}).catch(err => {
 				context.state.localLoading = false // deactive loading mode
 			})
@@ -419,18 +420,33 @@ Vue.use(Vuex);
       }).then(res => {
         //console.log("Submit Info")
         //console.log(res)
-        alert("Exam Submitted")
+        //console.log(res.data)
         this.state.submittedExams = res.data
       }).catch(err => {
         context.state.localLoading = false
         if (err.response) {
-          console.log(err.response)
+          //console.log(err.response)
           //alert("Unable to submit exam")
 
         }
       })
     },
-  },//end of actions
+
+    submitAnswers( context , payload ){
+      payload.forEach(user => {
+        mixin.methods.request({
+          url: 'answer/submitA/'+payload.question_id + '/' + payload.answerText,
+          method: 'GET',
+        }).then(res => {
+          //console.log(res)
+          //this.state.specificRoomAdmins.push(res.data)
+          this.state.specificRoomMembers.push({role:"Admin",data:res.data})
+        }).catch(err => {
+
+        })
+      })
+    },
+},//end of actions
 
 
   getters: {

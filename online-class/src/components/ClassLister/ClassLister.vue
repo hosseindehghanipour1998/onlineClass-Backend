@@ -13,7 +13,7 @@
 
 
         <div v-if="this.showUserData" class="mother">
-            <UserListerLayout :classID="this.selectedRoomId" ></UserListerLayout>
+            <UserListerLayout  :iAmAdmin="this.AmIAdmin()" :classID="this.selectedRoomId" ></UserListerLayout>
         </div>
 
     </div>
@@ -31,6 +31,15 @@ export default {
     },
 
     methods:{
+
+        AmIAdmin(){
+            let isAdmin = false
+            if (this.userRole == "Admin"){
+                isAdmin = true;
+            }
+            return isAdmin
+        },
+
         backButtonClick(){
             this.showUserData = false;
         },
@@ -46,6 +55,7 @@ export default {
             //console.log(item.classData
             //var p = new Promise((this.fetchData(item), this.changeState()) )
             this.selectedRoomId = item.classData.id
+            this.userRole = item.UserRole
             //console.log(this.selectedRoomId)
             // console.log("Selected Room Id")
             // console.log(item.classData.id)
@@ -69,6 +79,8 @@ export default {
                 // }
             ],
             selectedRoomId : null ,
+            isAdmin : false ,
+            userRole : ""
 
         }
     },
