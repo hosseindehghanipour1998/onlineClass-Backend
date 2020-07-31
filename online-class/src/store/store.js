@@ -225,7 +225,7 @@ Vue.use(Vuex);
 
     },
     ///Test Ground
-    fetchCreate(context, payload) {
+    fetchCreateExam(context, payload) {
       let room_id = payload.room
       mixin.methods.request({
         url: 'room/'+ room_id +'/',
@@ -262,14 +262,8 @@ Vue.use(Vuex);
         }
       })
     },
+    /// End of TestGround
 
-
-
-
-
-
-
-    /////////////
 
     getRoomsExams(context) {
       context.state.rooms.admin.forEach(room => {
