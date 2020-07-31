@@ -270,6 +270,7 @@ Vue.use(Vuex);
 
     getRoomsExams(context) {
       this.state.roomsForExams = []
+      console.log(this.state.rooms)
       context.state.rooms.admin.forEach(room => {
         //console.log(room)
         mixin.methods.request({
@@ -398,7 +399,8 @@ Vue.use(Vuex);
         url: 'answer/retrieve/',
         method: 'GET',
       }).then(res => {
-        //console.log(res)
+        console.log("Submit Info")
+        console.log(res)
         this.state.submittedExams = res.data
       }).catch(err => {
         context.state.localLoading = false

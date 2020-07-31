@@ -138,7 +138,7 @@ export default {
 
             if ( wantedPage === 'LogOutWanted' ){
                 //this.pageNo == this.availableComponents.Test;
-                localStorage.removeItem('token');
+                //localStorage.removeItem('token');
                 this.$store.state.user.isLoggedIn = false;
                 this.$router.push('/login/');
             }

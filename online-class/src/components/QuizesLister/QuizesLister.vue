@@ -40,11 +40,14 @@ export default {
             this.showUserData = state;
         },
         examOnclick(item){
+            //console.log("item")
+            //console.log(item)
             let canPaticipate = true ;
             this.$store.state.submittedExams.forEach(sub => {
-                if ( item['exam'].id == sub.fields.exam_id) {
+                if ( (item['exam'].id == sub.fields.exam_id) && (this.$store.state.user.id==sub.fields.user_id)) {
                     alert("Can not participate in Quiz")
                     canPaticipate = false;
+                    //this.isActive = false ;
                 }
             })
             if(canPaticipate){
@@ -61,7 +64,7 @@ export default {
 
     data(){
         return{
-            isActive : true ,
+            // isActive : true ,
             showUserData:false ,
 
         }
