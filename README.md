@@ -1,7 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # onlineClass
-This repository is created based on the demands of my ___Web Programming___ course at [Shiraz University](http://www2.shirazu.ac.ir/en/node/1510) taught by [Dr.Alireza Kazemi](https://scholar.google.com/citations?user=kYBHUe8AAAAJ&hl=en).
+This repository is created based on the demands of my ___Web Programming___ course project at [Shiraz University](http://www2.shirazu.ac.ir/en/node/1510) taught by [Dr.Alireza Kazemi](https://scholar.google.com/citations?user=kYBHUe8AAAAJ&hl=en).
 
 
 
