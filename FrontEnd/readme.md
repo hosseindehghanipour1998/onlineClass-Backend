@@ -17,9 +17,9 @@
     "vuex": "^3.5.1"
     
 ## Good Tutorials
-    1. [Getting Start With Vue](https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance/)
-    2. Getting More Into It by [The Net Ninja](https://www.youtube.com/watch?v=5LYrN_cAJoA&list=PL4cUxeGkcC9gQcYgjhBoeQH7wiAyZNrYa)
-    3. Handling local Data by VueX taught by [The Net Ninja](https://www.youtube.com/watch?v=BGAu__J4xoc&list=PL4cUxeGkcC9i371QO_Rtkl26MwtiJ30P2)
-    4 . HTML & CSS & Java Script by [Udemy - Andrei Neagoie](https://www.udemy.com/course/the-complete-web-developer-zero-to-mastery/)
+- [___Getting Start With Vue___](https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance/)
+- ___Getting More Into It___ by [The Net Ninja](https://www.youtube.com/watch?v=5LYrN_cAJoA&list=PL4cUxeGkcC9gQcYgjhBoeQH7wiAyZNrYa)
+- Handling local Data with ___VueX___  by [The Net Ninja](https://www.youtube.com/watch?v=BGAu__J4xoc&list=PL4cUxeGkcC9i371QO_Rtkl26MwtiJ30P2)
+- ___HTML & CSS & Java Script___ by [Udemy - Andrei Neagoie](https://www.udemy.com/course/the-complete-web-developer-zero-to-mastery/)
 ## More Info
 - For More Information Visit [Vue](https://vuejs.org/)
