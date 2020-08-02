@@ -3,7 +3,7 @@
 ## Installing
 - `npm install`
 - `npm install -g vue-cli`
-- `vue init <temple-name> <project-name>` ()
+- `vue init <temple-name> <project-name>` 
 - `npm run dev`
 
 ## Installing Router
